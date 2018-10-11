@@ -1,0 +1,12 @@
+The easiest way to get this installed is to unzip this directory and add the directory to your .vmdrc file as follows:
+
+lappend auto_path /path/to/this/directory
+
+From there, you can generate and minimize the lignins contained within a library file through the following commands within VMD.
+
+package require ligninbuilder
+ligninbuilder::buildfromlibrary /path/to/library/text/file.txt Spruce
+ligninbuilder::minimizestructures Spruce namd2 "+p8"
+
+These commands will generate structrually sane lignins from the "file.txt" library in the Spruce directory.
+

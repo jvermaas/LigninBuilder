@@ -1,0 +1,103 @@
+#############################################################
+## JOB DESCRIPTION                                         ##
+#############################################################
+
+#Minimize lignin structure under FEP conditions so that ring penetrations can be dealt with.
+
+#############################################################
+## ADJUSTABLE PARAMETERS                                   ##
+#############################################################
+set inputname L
+structure          $inputname.psf
+coordinates        $inputname.pdb
+
+set runnumber 0
+
+set outputname		out
+set temperature    300
+firsttimestep 0
+
+
+#############################################################
+## SIMULATION PARAMETERS                                   ##
+#############################################################
+
+# Input
+paraTypeCharmm      on
+parameters par_all36_carb.prm
+parameters par_lignin.prm
+parameters extraterms-par_lignin.prm
+
+# NOTE: Do not set the initial velocity temperature if you 
+# have also specified a .vel restart file!
+# temperature         $temperature
+ 
+
+# Periodic Boundary conditions
+# NOTE: Do not set the periodic cell basis if you have also 
+# specified an .xsc restart file!
+
+
+wrapWater           on
+wrapAll             on
+
+
+# Force-Field Parameters
+exclude             scaled1-4
+1-4scaling          1.0
+cutoff              12.
+switching           on
+switchdist          10.
+pairlistdist        14
+margin               3
+
+
+# Integrator Parameters
+rigidBonds all
+timestep            2.0
+nonbondedFreq       1
+fullElectFrequency  2  
+stepspercycle       20
+
+
+# Constant Temperature Control
+langevin            on    ;# do langevin dynamics
+langevinDamping     1     ;# damping coefficient (gamma) of 5/ps
+langevinTemp        $temperature
+langevinHydrogen    no    ;# don't couple langevin bath to hydrogens
+temperature $temperature
+
+
+# Output
+outputName          $outputname
+restartname         $outputname.restart
+dcdfile             $outputname.dcd
+xstFile             $outputname.xst
+
+restartfreq         1000
+dcdfreq             20
+xstFreq             1000
+outputEnergies      100
+
+alch on
+alchType ti
+alchLambda 0.02
+alchLambda2 0.02
+
+gridForce on
+gridForceFile L.pdb
+gridForceCol B
+gridForceChargeCol O
+gridForcePotFile grid.dx
+gridForceScale 2 2 2
+
+dielectric 80
+
+source addenda.namd
+
+#############################################################
+## EXECUTION SCRIPT                                        ##
+#############################################################
+
+# Minimization
+minimize 500
