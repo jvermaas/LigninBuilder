@@ -63,4 +63,4 @@ The first argument is the input directory, and the second is the output director
 package require ligninbuilder
 ::ligninbuilder::minimizestructures output namd2 "+p8" "parameters extraparameters.prm \n parameters toppar/par_all36_cgenff.prm \n"
 ```
-This minimizes the structures, and creates lignin that is ready for simulation.
+The last argument is added into the NAMD configuration file right before minimization, and in this case serves to provide NAMD with the extra parameters it requires for the spirodienone. The minimized the structures will be in the `output` directory, and ready for further simulation.
