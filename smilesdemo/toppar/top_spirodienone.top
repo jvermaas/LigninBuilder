@@ -1,0 +1,143 @@
+*>>>>>>>>CHARMM  Topology for Spirodienones <<<<<<
+* Spirodienones, Josh Vermaas Fall 2018
+36 1
+
+
+DEFA FIRS NONE LAST NONE
+AUTO ANGLES DIHE
+
+RESI GUAS 0.00 ! guaiacyl spirodienone
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !        O3-C10   H2 H7  H8  H91   HO9
+ATOM C3   CLG2R6B  0.115 !  0.223 -0.108 !          \     /   |   |   |    /
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 !           C3==C2   C7--C8--C9-O9
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !          /     \  / |   |   |
+ATOM H101 HLGA3    0.090 !  0.090  0.000 !     O4==C4      C1  O7  O8  H92
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !           \     / \  \   \
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !           C5==C6  H1  HO7 HO8       
+ATOM C4   CLG2R6A  0.441 ! adjusted from !           |   |  
+ATOM O4   OG2D3   -0.441 ! CGenFF        !           H5  H6
+ATOM C5   CLG2R61 -0.115 ! -0.116  0.001 ! 
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG311  -0.090 ! adjusted from ! 
+ATOM H1   HLGA1    0.090 ! CGenFF        ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   O4   C4   C5   C1   H1   C5   H5  
+BOND  C1   C7   C7   H7   C7   O7   C7   C8  
+BOND  O7   HO7  C8   H8   C8   O8   C8   C9  
+BOND  O8   HO8  C9   H91  C9   H92  C9   O9  
+BOND  O9   HO9 
+
+RESI  PHPS 0.00 ! p-hydroxyphenyl spirodienone
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 !          H3     H2 H7  H8  H91   HO9
+ATOM C2   CLG2R61 -0.115 ! -0.109 -0.006 !           |    /   |   |   |    /
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !           C3==C2   C7--C8--C9-O9
+ATOM C3   CLG2R61 -0.115 ! -0.117  0.002 !          /     \  / |   |   |
+ATOM H3   HLGR61   0.115 !  0.115  0.000 !     O4==C4      C1  O7  O8  H92
+ATOM C4   CLG2R6A  0.441 ! adjusted from !          \      / \  \   \
+ATOM O4   OG2D3   -0.441 ! CGenFF        !           C5==C6  H1  HO7 HO8       
+ATOM C5   CLG2R61 -0.115 ! -0.117  0.002 !           |   |  
+ATOM H5   HLGR61   0.115 !  0.115  0.000 !           H5  H6
+ATOM C1   CLG311  -0.090 ! adjusted from ! 
+ATOM H1   HLGA1    0.090 ! CGenFF        ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   H3  
+BOND  C4   O4   C4   C5   C1   H1   C5   H5  
+BOND  C1   C7   C7   H7   C7   O7   C7   C8  
+BOND  O7   HO7  C8   H8   C8   O8   C8   C9  
+BOND  O8   HO8  C9   H91  C9   H92  C9   O9  
+BOND  O9   HO9 
+
+RESI  SYRS 0.00 ! syringyl spirodienone
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.109 -0.006 !      O3-C10    H2  H7  H8  H91   HO9
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !        \      /    |   |   |    /
+ATOM C3   CLG2R6B  0.115 !  0.224 -0.109 !         C3===CC2   C7--C8--C9-O9
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 !        /       \  / |   |   |
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !   O4==C4        C1  O7  O8  H92
+ATOM H101 HLGA3    0.090 !  0.090  0.000 !         \      /  \  \   \
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !         C5===C6   H1  HO7 HO8       
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !         /     |  
+ATOM C4   CLG2R6A  0.441 ! adjusted from !        O5-C11 H6
+ATOM O4   OG2D3   -0.441 ! CGenFF        ! 
+ATOM C5   CLG2R6B  0.115 !  0.224 -0.109 ! 
+ATOM O5   OLG301  -0.329 ! -0.391  0.062 ! 
+ATOM C11  CLG331  -0.056 ! -0.100  0.044 ! 
+ATOM H111 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM H112 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM H113 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM C1   CLG311  -0.090 ! adjusted from ! 
+ATOM H1   HLGA1    0.090 ! CGenFF        ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   O4   C4   C5   C1   H1   C5   O5  
+BOND  O5   C11  C11  H111 C11  H112 C11  H113
+BOND  C1   C7   C7   H7   C7   O7   C7   C8  
+BOND  O7   HO7  C8   H8   C8   O8   C8   C9  
+BOND  O8   HO8  C9   H91  C9   H92  C9   O9  
+BOND  O9   HO9 
+
+PRES SPIR 0.00 !Make a spirodienone, assuming that residue 1 (the ketone-bearing residue) has already been patched via BO4 to another residue
+DELETE ATOM 1H1  !  \       
+DELETE ATOM 1HO7 !   2C8--2C7--2C1 
+DELETE ATOM 2HO7 !\  /    |
+DELETE ATOM 2O7  ! 1C1   1O7
+DELETE ATOM 2HO8 !/  \   /
+DELETE ATOM 2O8  !    1C7
+BOND 1O7 2C7     !      \
+BOND 1C1 2C8     !       1C8
+!Charges taken by analogy from BB
+ATOM 1C1 CG3C50   0.000
+ATOM 1C7 CLG3C51  0.064
+ATOM 1O7 OLG3C51 -0.403
+ATOM 2C7 CLG3C51  0.159
+ATOM 2C8 CLG3C51 -0.090

@@ -79,7 +79,13 @@ proc placemonomers {mid monomerlist} {
 	for { set i 1 } { $i <= [llength $monomerlist] } { incr i } {
 		set sel [atomselect $mid "resid $i"]
 		set resname [string tolower [lsort -unique [$sel get resname]]]
-		puts $env(LIGNINBUILDERDIR)
+		if { $resname == "guas" } {
+			set resname guai
+		} elseif { $resname == "phps" } {
+			set resname php
+		} elseif { $resname == "syrs" } {
+			set resname syr
+		}
 		set newmol [mol new [file join $env(LIGNINBUILDERDIR) startingstructure $resname.js] waitfor all]
 		set newsel [atomselect top "name [$sel get name]" frame [expr {floor(rand()*[molinfo top get numframes])}]]
 		$sel set {x y z} [$newsel get {x y z}]
@@ -99,13 +105,17 @@ proc applyfitcommands {mid fitcommands} {
 		set msel2 [atomselect $mid $mtxt2]
 		set name [string tolower [string range [lindex [$sel1 get resname] 0] 0 0][lindex $fitcommand 0][string range [lindex [$sel2 get resname] 0] 0 0]]
 		puts $name
+		puts [lindex $fitcommand 0]
 		if { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 && [string range [lindex $fitcommand 0] 0 1] == "B5" } {
 			set name [string tolower P[lindex $fitcommand 0]]
 		} elseif { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 && ([lindex $fitcommand 0] in [list "BB" "AOG" "GOG"] || [lindex [$sel2 get resname] 0] == "TRCN") } {
 			set name [string tolower P[lindex $fitcommand 0]P]
+		} elseif { [lindex $fitcommand 0] == "SPIR" } {
+			set name [string tolower PB1[string range [lindex [$sel2 get resname] 0] 0 0]]
 		} elseif { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 } {
 			set name [string tolower P[lindex $fitcommand 0][string range [lindex [$sel2 get resname] 0] 0 0]]
 		} 
+		puts $name
 		if { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 } {
 			error "Can't find appropriate template for $fitcommand"
 		}
@@ -448,7 +458,7 @@ proc buildfromlibrary {inputlibrary outputdirectory} {
 # 	}
 # }
 
-proc minimizestructures {directory namdbin namdargs} {
+proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 	global env
 	#Copy over parameters from their respective directories.
 	set paramlist [list [file join $env(CHARMMPARDIR) par_all36_carb.prm] [file join $env(LIGNINBUILDERDIR) par_lignin.prm] [file join $env(LIGNINBUILDERDIR) extraterms-par_lignin.prm] [file join $env(LIGNINBUILDERDIR) minimize.namd] [file join $env(LIGNINBUILDERDIR) colvars.conf]]
@@ -460,6 +470,7 @@ proc minimizestructures {directory namdbin namdargs} {
 		close $f
 		close $out
 	}
+	#Minimization command needs to be last.
 	set psflist [lsort [glob [file join $directory "*psf"]]]
 	foreach psf $psflist {
 		set tail [file tail $psf]
@@ -474,10 +485,11 @@ proc minimizestructures {directory namdbin namdargs} {
 		set finished 0
 		set counter 0
 		set fout [open [file join $directory "addenda.namd"] w ]
-		puts $fout ""
+		puts $fout $namdextraconf
 		close $fout
 		set othersel [atomselect $mid "within 4 of occupancy > 0 and not withinbonds 3 of occupancy > 0"]
 		set badbeta [atomselect $mid "beta > 0"]
+		puts "$namdbin $namdargs [file join $directory minimize.namd] $namdextraconf"
 		while { ! $finished } {
 			::ExecTool::exec $namdbin $namdargs [file join $directory minimize.namd] > [file join $directory $name.log]
 			animate delete all $mid
@@ -497,15 +509,12 @@ proc minimizestructures {directory namdbin namdargs} {
 				}
 			}
 			$othersel update
+			set fout [open [file join $directory "addenda.namd"] w ]
+			puts $fout $namdextraconf
 			if { [$othersel num] } {
-				set fout [open [file join $directory "addenda.namd"] w ]
 				puts $fout "colvars on\ncolvarsconfig colvars.conf\n"
-				close $fout
-			} else {
-				set fout [open [file join $directory "addenda.namd"] w ]
-				puts $fout ""
-				close $fout
 			}
+			close $fout
 			if { ! $finished && $counter > 100 } {
 				error "I'm sorry, I don't seem to be able to minimize $namd, and I tried 100 times!"
 			}

@@ -99,5 +99,4 @@ source addenda.namd
 ## EXECUTION SCRIPT                                        ##
 #############################################################
 
-# Minimization
 minimize 500
