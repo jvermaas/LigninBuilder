@@ -29,6 +29,7 @@ There are several things that can go wrong when minimizing structures.
 ##Creating Lignin Models from a SMILES String
 
 If creating a full library proves difficult, we have developed a prototype implementation that uses SMILES representation of lignin as input, found in `smilesdemo`. The implementation uses some ancilliary python scripts to facilitate substructure recognition and to determine what parameters might be missing due to unforseen linkages. It requires the following python libraries to be available, most of which are installable via pip:
+
 -[Numpy](https://pypi.org/project/numpy/)
 -[ParmEd](https://pypi.org/project/ParmEd/)
 -[RDKit](https://www.rdkit.org/docs/Install.html)
