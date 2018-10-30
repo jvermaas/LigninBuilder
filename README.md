@@ -35,7 +35,7 @@ If creating a full library proves difficult, we have developed a prototype imple
 - [RDKit](https://www.rdkit.org/docs/Install.html)
 - [weighted_levenshtein](https://pypi.org/project/weighted-levenshtein/)
 
-Some of the commands below are specific to Unix-style operating systems. If you'd like to follow along explicitly, try the Windows Subsystem for Linux, but otherwise some of these commands will need to be translated.
+Some of the commands below are specific to Unix-style operating systems. If you'd like to follow along explicitly on a windows operating system, try the Windows Subsystem for Linux, but otherwise some of these commands will need to be translated.
 
 We start in the `smilesdemo` directory by inspecting the `demo.smiles` file. Each line contains a [SMILES string](https://en.wikipedia.org/wiki/Simplified_molecular-input_line-entry_system), which can be visualized in many different programs. There are three different lignin polymers specified. The first step is to create the instructions to create the lignin topology. This is done using the `writepsfgen.py` script:
 ```bash
