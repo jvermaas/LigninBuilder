@@ -6,22 +6,23 @@ dimers = [x for x in Chem.SmilesMolSupplier("monomerdimersmiles/dimers.smiles")]
 endcaps = [x for x in Chem.SmilesMolSupplier("monomerdimersmiles/endcaps.smiles")]
 ##This is handy for debugging, mapping indices to the input smiles strings.
 # print len(dimers)
-# def mol_with_atom_index( mol ):
-#     atoms = mol.GetNumAtoms()
-#     for idx in range( atoms ):
-#         mol.GetAtomWithIdx( idx ).SetProp( 'molAtomMapNumber', str( mol.GetAtomWithIdx( idx ).GetIdx() ) )
-#     return mol
-# for i in range(len(dimers)):
-# 	mol_with_atom_index(dimers[i])
-# 	Draw.MolToFile(dimers[i], "test-%d.png" % i)
-# for i in range(len(monomers)):
-# 	mol_with_atom_index(monomers[i])
-# 	Draw.MolToFile(monomers[i], "testm-%d.png" % i)
+def mol_with_atom_index( mol ):
+    atoms = mol.GetNumAtoms()
+    for idx in range( atoms ):
+        mol.GetAtomWithIdx( idx ).SetProp( 'molAtomMapNumber', str( mol.GetAtomWithIdx( idx ).GetIdx() ) )
+    return mol
+for i in range(len(dimers)):
+	mol_with_atom_index(dimers[i])
+	Draw.MolToFile(dimers[i], "test-%d.png" % i)
+
+for i in range(len(monomers)):
+	mol_with_atom_index(monomers[i])
+	Draw.MolToFile(monomers[i], "testm-%d.png" % i)
 # for i in range(len(endcaps)):
 # 	mol_with_atom_index(endcaps[i])
 # 	Draw.MolToFile(endcaps[i], "testend-%d.png" % i)
 
-testmol = [x for x in Chem.SmilesMolSupplier("demo.smiles")]
+testmol = [x for x in Chem.SmilesMolSupplier("example_flow.smi")]
 
 fout = open("psfgen.tcl", "w")
 fout.write("package require psfgen\ntopology toppar/top_all36_cgenff.rtf\ntopology toppar/top_lignin.top\ntopology toppar/top_spirodienone.top\n")
@@ -35,7 +36,7 @@ def markC4(mol, name, match):
 	elif name in ['PHPS','GUAS','SYRS']:
 		atom = mol.GetAtomWithIdx(match[4])
 	if atom.HasProp("residue"):
-			atom.SetProp("name", "C4")
+		atom.SetProp("name", "C4")
 def markC1(mol, name, match):
 	if name in ['PHP', 'SYR', 'TRCN']:
 		atom = mol.GetAtomWithIdx(match[4])
@@ -57,23 +58,26 @@ def clearC1(mol, residue, idxs):
 			#print "Cleared C1 from residue %d" % residue
 			atom.ClearProp("name")
 for molnum, mol in enumerate(testmol):
+	# if molnum == 0:
+	# 	continue
 	print "Mol: ", molnum
 	if len(testmol) > 1:
 		segname = "L%d" % molnum
 	else:
 		segname = "L"
 	#Find aromatic units in the test molecule. These are the monomer building blocks we are interested in.
-	benzenerings = mol.GetSubstructMatches(monomers[0])
+	benzenerings = mol.GetSubstructMatches(monomers[0], maxMatches=100000)
+	#print len(benzenerings)
 	for tup in benzenerings:
 		for idx in tup:
 			atom = mol.GetAtomWithIdx(idx)
 			atom.SetUnsignedProp("ringAtom", 1)
 	#Find the quinone-type units in the test molecules.
-	qrings = mol.GetSubstructMatches(monomers[1])
+	qrings = mol.GetSubstructMatches(monomers[1], maxMatches=1000)
 	for tup in qrings:
 		#Skip over the oxygen so that the "ring" still has 6 atoms.
 		for idx in tup[1:]:
-			print idx
+			#print idx
 			atom = mol.GetAtomWithIdx(idx)
 			atom.SetUnsignedProp("ringAtom", 1)
 	residue = 1
@@ -107,12 +111,14 @@ for molnum, mol in enumerate(testmol):
 					atom.SetUnsignedProp("residue", residue)
 					atom.SetProp("restype", monomer.GetProp('_Name'))
 					atom.SetProp( 'molAtomMapNumber', str( residue ))
-			markC4(mol, monomer.GetProp('_Name'), match)
-			markC1(mol, monomer.GetProp('_Name'), match)
 			if newresidue:
+				markC4(mol, monomer.GetProp('_Name'), match)
+				markC1(mol, monomer.GetProp('_Name'), match)
 				residue += 1
+	#print residue
 	#Another debugging draw command.
-	#Draw.MolToFile(mol, "testmol-%d.png" % molnum, size=(2400,2400))
+	#Draw.MolToFile(mol, "testmol-%d.png" % molnum, size=(3600,3600))
+	#exit()
 	#Write monomers
 	fout.write("resetpsf\nsegment %s {\n" % segname)
 	residuelist = []
@@ -134,7 +140,7 @@ for molnum, mol in enumerate(testmol):
 	#Now look for dimeric substructures in the lignin.
 	for dimer in dimers:
 		matches = mol.GetSubstructMatches(dimer)
-		print matches, dimer.GetProp('_Name')
+		#print matches, dimer.GetProp('_Name')
 		for match in matches:
 			#These are symmetric. Order is irrelevant.
 			if dimer.GetProp('_Name') in ['BB', '55']:
@@ -159,12 +165,18 @@ for molnum, mol in enumerate(testmol):
 			elif dimer.GetProp('_Name') == '4O5':
 				atomresida = mol.GetAtomWithIdx(match[5])
 				atomresidb = mol.GetAtomWithIdx(match[7])
-				if atomresida.HasProp("name") and atomresida.GetProp("name") == "C4":
+				if atomresida.HasProp("name") and atomresida.GetProp("name") == "C4" and atomresidb.HasProp("name") and atomresidb.GetProp("name") == "C4":
+					print "This should be impossible."
+					exit()
+				elif atomresida.HasProp("name") and atomresida.GetProp("name") == "C4":
 					atomresid1 = atomresida
 					atomresid2 = atomresidb
-				else:
+				elif atomresidb.HasProp("name") and atomresidb.GetProp("name") == "C4":
 					atomresid2 = atomresida
 					atomresid1 = atomresidb
+				else:
+					print "I should never get here!"
+					exit()
 				fout.write("patch 4O5 %s:%s %s:%s\n" % (segname, atomresid1.GetProp('residue'), segname, atomresid2.GetProp('residue')))
 			elif dimer.GetProp('_Name') in ['AO4', 'AOA', 'GOA']:
 				atomresid2 = mol.GetAtomWithIdx(match[6]) #The "2" residue
