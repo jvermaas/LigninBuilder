@@ -114,7 +114,7 @@ proc applyfitcommands {mid fitcommands} {
 			set name [string tolower PB1[string range [lindex [$sel2 get resname] 0] 0 0]]
 		} elseif { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 } {
 			set name [string tolower P[lindex $fitcommand 0][string range [lindex [$sel2 get resname] 0] 0 0]]
-		}
+		} 
 		puts $name
 		if { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 } {
 			error "Can't find appropriate template for $fitcommand"
@@ -170,7 +170,7 @@ proc makelignincoordinates {inputdir {outdir .}} {
 		if { [expr {abs($chargesum - round($chargesum))} > 1e-3] } {
 			puts "This isn't an integer..."
 			puts "PSF charge sum not an integer for file $psf"
-			#exit
+			exit
 		}
 		set c1sel [atomselect top "name C1"]; #This works because all lignin monomers have a C1 atom that remains unmodified.
 		set monomerlist [$c1sel get resname]
