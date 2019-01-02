@@ -6,23 +6,23 @@ dimers = [x for x in Chem.SmilesMolSupplier("monomerdimersmiles/dimers.smiles")]
 endcaps = [x for x in Chem.SmilesMolSupplier("monomerdimersmiles/endcaps.smiles")]
 ##This is handy for debugging, mapping indices to the input smiles strings.
 # print len(dimers)
-def mol_with_atom_index( mol ):
-    atoms = mol.GetNumAtoms()
-    for idx in range( atoms ):
-        mol.GetAtomWithIdx( idx ).SetProp( 'molAtomMapNumber', str( mol.GetAtomWithIdx( idx ).GetIdx() ) )
-    return mol
-for i in range(len(dimers)):
-	mol_with_atom_index(dimers[i])
-	Draw.MolToFile(dimers[i], "test-%d.png" % i)
+# def mol_with_atom_index( mol ):
+#     atoms = mol.GetNumAtoms()
+#     for idx in range( atoms ):
+#         mol.GetAtomWithIdx( idx ).SetProp( 'molAtomMapNumber', str( mol.GetAtomWithIdx( idx ).GetIdx() ) )
+#     return mol
+# for i in range(len(dimers)):
+# 	mol_with_atom_index(dimers[i])
+# 	Draw.MolToFile(dimers[i], "test-%d.png" % i)
 
-for i in range(len(monomers)):
-	mol_with_atom_index(monomers[i])
-	Draw.MolToFile(monomers[i], "testm-%d.png" % i)
+# for i in range(len(monomers)):
+# 	mol_with_atom_index(monomers[i])
+# 	Draw.MolToFile(monomers[i], "testm-%d.png" % i)
 # for i in range(len(endcaps)):
 # 	mol_with_atom_index(endcaps[i])
 # 	Draw.MolToFile(endcaps[i], "testend-%d.png" % i)
 
-testmol = [x for x in Chem.SmilesMolSupplier("example_flow.smi")]
+testmol = [x for x in Chem.SmilesMolSupplier("demo.smi")]
 
 fout = open("psfgen.tcl", "w")
 fout.write("package require psfgen\ntopology toppar/top_all36_cgenff.rtf\ntopology toppar/top_lignin.top\ntopology toppar/top_spirodienone.top\n")
@@ -58,14 +58,13 @@ def clearC1(mol, residue, idxs):
 			#print "Cleared C1 from residue %d" % residue
 			atom.ClearProp("name")
 for molnum, mol in enumerate(testmol):
-	# if molnum == 0:
-	# 	continue
 	print "Mol: ", molnum
 	if len(testmol) > 1:
 		segname = "L%d" % molnum
 	else:
 		segname = "L"
 	#Find aromatic units in the test molecule. These are the monomer building blocks we are interested in.
+	#Large lignin structures need absurdly high values for maxMatches, since each ring matches with benzene 6 ways.
 	benzenerings = mol.GetSubstructMatches(monomers[0], maxMatches=100000)
 	#print len(benzenerings)
 	for tup in benzenerings:
@@ -77,7 +76,6 @@ for molnum, mol in enumerate(testmol):
 	for tup in qrings:
 		#Skip over the oxygen so that the "ring" still has 6 atoms.
 		for idx in tup[1:]:
-			#print idx
 			atom = mol.GetAtomWithIdx(idx)
 			atom.SetUnsignedProp("ringAtom", 1)
 	residue = 1
@@ -115,10 +113,8 @@ for molnum, mol in enumerate(testmol):
 				markC4(mol, monomer.GetProp('_Name'), match)
 				markC1(mol, monomer.GetProp('_Name'), match)
 				residue += 1
-	#print residue
 	#Another debugging draw command.
 	#Draw.MolToFile(mol, "testmol-%d.png" % molnum, size=(3600,3600))
-	#exit()
 	#Write monomers
 	fout.write("resetpsf\nsegment %s {\n" % segname)
 	residuelist = []
@@ -128,11 +124,7 @@ for molnum, mol in enumerate(testmol):
 			residuelist.append(atom.GetProp("residue"))
 			resnamelist.append(atom.GetProp("restype"))
 	resnamelist = np.array(resnamelist)
-	# print len(resnamelist)
-	# print residuelist
-	# print np.sort(np.array(residuelist, dtype=np.int))
-	# if molnum == 1:
-	# 	exit()
+
 	for i, monoletter in enumerate(resnamelist[np.argsort(np.array(residuelist, dtype=np.int))][::6]):
 		fout.write("residue %d %s\n" % (i+1, monoletter))
 	fout.write("}\n")
