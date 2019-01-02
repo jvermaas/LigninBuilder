@@ -139,6 +139,31 @@ proc applyfitcommands {mid fitcommands} {
 		# }
 	}
 }
+proc applyterminalpatches {mid outdir segname} {
+	#This applies a patch to the C1 end of lignin.
+	set makedbbl [atomselect $mid "(same residue as name HO7) and (same residue as name HO8)"]
+	set reslist [lsort -unique -integer [$makedbbl get resid]]
+	foreach res $reslist {
+		#Make the double bond carbons have a dihedral of 180
+		set tmpsel [atomselect $mid "resid $res and name C1 C7 C8 C9"]
+		set dihedval [measure dihed [$tmpsel get index] molid $mid]
+		autorotatebond [lindex [$tmpsel get index] 1] [lindex [$tmpsel get index] 2] [expr {180-$dihedval}] $mid
+		$tmpsel delete
+	}
+	set allsel [atomselect $mid "all"]
+	$allsel writepdb [file join $outdir $segname.pdb]
+	resetpsf
+	readpsf [file join $outdir $segname.psf]
+	coordpdb [file join $outdir $segname.pdb]
+	foreach res $reslist {
+		patch DBBL $segname:$res
+	}
+	regenerate angles dihedrals
+	guesscoord
+	$allsel delete
+	writepsf [file join $outdir $segname.psf]
+	writepdb [file join $outdir $segname.pdb]
+}
 proc readpsfremarks {psf} {
 	set fin [open $psf r]
 	set contents [read $fin]
@@ -178,7 +203,9 @@ proc makelignincoordinates {inputdir {outdir .}} {
 		placemonomers $mid $monomerlist
 		set fitcommands [readpsfremarks $psf]
 		applyfitcommands $mid $fitcommands
-		$allsel writepdb [file join $outdir "[file rootname $psf].pdb"]
+
+		applyterminalpatches $mid $outdir [file rootname $psf]
+		
 	}
 }
 proc makelignin {monomerlist patchdescription {segname L} {outdir .}} {
@@ -299,28 +326,8 @@ proc makelignin {monomerlist patchdescription {segname L} {outdir .}} {
 	#Now we look back at the patches we issued, and try to get the local geometry to match!
 	applyfitcommands $mid $fitcommands
 	
-	#This applies a patch to the C1
-	set makedbbl [atomselect $mid "(same residue as name HO7) and (same residue as name HO8)"]
-	set reslist [lsort -unique -integer [$makedbbl get resid]]
-	foreach res $reslist {
-		#Make the double bond carbons have a dihedral of 180
-		set tmpsel [atomselect $mid "resid $res and name C1 C7 C8 C9"]
-		set dihedval [measure dihed [$tmpsel get index] molid $mid]
-		autorotatebond [lindex [$tmpsel get index] 1] [lindex [$tmpsel get index] 2] [expr {180-$dihedval}] $mid
-		$tmpsel delete
-	}
-	set allsel [atomselect $mid "all"]
-	$allsel writepdb [file join $outdir $segname.pdb]
-	resetpsf
-	readpsf [file join $outdir $segname.psf]
-	coordpdb [file join $outdir $segname.pdb]
-	foreach res $reslist {
-		patch DBBL $segname:$res
-	}
-	regenerate angles dihedrals
-	guesscoord
-	writepsf [file join $outdir $segname.psf]
-	writepdb [file join $outdir $segname.pdb]
+	#Apply patches to C1
+	applyterminalpatches $mid $outdir $segname
 	#animate write dcd "$segname.dcd" waitfor all $mid
 }
 proc expandselections {sel1 sel2 {mid top}} {
