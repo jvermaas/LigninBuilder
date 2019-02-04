@@ -74,3 +74,10 @@ Automated Transformation of Lignin Topologies into Atomic Structures with Lignin
 Josh V. Vermaas, Lauren D. Dellon, Linda J. Broadbelt, Gregg T. Beckham, and Michael F. Crowley
 ACS Sustainable Chemistry & Engineering 2019 7 (3), 3443-3453
 DOI: 10.1021/acssuschemeng.8b05665
+
+For practical simulation, you would also likely cite the updated lignin force field:
+
+Systematic parameterization of lignin for the CHARMM force field
+Josh V. Vermaas, Loukas Petridis, John Ralph, Michael F. Crowley, and Gregg T. Beckham
+Green Chemistry 2019 21, 109-122
+DOI: 10.1039/C8GC03209B
