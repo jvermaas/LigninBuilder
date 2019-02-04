@@ -65,3 +65,12 @@ package require ligninbuilder
 ::ligninbuilder::minimizestructures output namd2 "+p8" "parameters extraparameters.prm \n parameters toppar/par_all36_cgenff.prm \n"
 ```
 The last argument is added into the NAMD configuration file right before minimization, and in this case serves to provide NAMD with the extra parameters it requires for the spirodienone. The minimized the structures will be in the `output` directory, and ready for further simulation.
+
+## Citation
+
+If you found this useful for your own scientific work, please read and cite:
+
+Automated Transformation of Lignin Topologies into Atomic Structures with LigninBuilder
+Josh V. Vermaas, Lauren D. Dellon, Linda J. Broadbelt, Gregg T. Beckham, and Michael F. Crowley
+ACS Sustainable Chemistry & Engineering 2019 7 (3), 3443-3453
+DOI: 10.1021/acssuschemeng.8b05665
