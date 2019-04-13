@@ -22,7 +22,7 @@ endcaps = [x for x in Chem.SmilesMolSupplier("monomerdimersmiles/endcaps.smiles"
 # 	mol_with_atom_index(endcaps[i])
 # 	Draw.MolToFile(endcaps[i], "testend-%d.png" % i)
 
-testmol = [x for x in Chem.SmilesMolSupplier("ligninmol.smiles")]
+testmol = [x for x in Chem.SmilesMolSupplier("demo.smiles")]
 
 fout = open("psfgen.tcl", "w")
 fout.write("package require psfgen\ntopology toppar/top_all36_cgenff.rtf\ntopology toppar/top_lignin.top\ntopology toppar/top_spirodienone.top\n")
