@@ -142,6 +142,7 @@ proc applyfitcommands {mid fitcommands} {
 proc applyterminalpatches {mid outdir segname} {
 	#This applies a patch to the C1 end of lignin.
 	set makedbbl [atomselect $mid "(same residue as name HO7) and (same residue as name HO8)"]
+	set realsegname [lindex [$makedbbl get segname] 0]
 	set reslist [lsort -unique -integer [$makedbbl get resid]]
 	foreach res $reslist {
 		#Make the double bond carbons have a dihedral of 180
@@ -156,7 +157,7 @@ proc applyterminalpatches {mid outdir segname} {
 	readpsf [file join $outdir $segname.psf]
 	coordpdb [file join $outdir $segname.pdb]
 	foreach res $reslist {
-		patch DBBL $segname:$res
+		patch DBBL $realsegname:$res
 	}
 	regenerate angles dihedrals
 	guesscoord
@@ -183,7 +184,26 @@ proc readpsfremarks {psf} {
 	}
 	return $fitcommands
 }
+#If there are multiple lignins in a single psf, make some attempt to space them out.
+proc separatelignins {mid} {
+	set asel [atomselect $mid "all"]
+	set mw [vecsum [$asel get mass]]
+	set radius [expr {6 * (($mw * 0.001) ** (1.0/3.0))}]
+	set nfrags [llength [lsort -unique [$asel get fragment]]]
+	set dimension [expr {ceil( $nfrags ** (1.0/3.0))}]
+	set offset [expr {2 * $radius / $dimension}]
+	for { set f 0 } { $f < $nfrags } { incr f } {
+		set sel [atomselect $mid "fragment $f"]
+		$sel moveby [vecscale -1 [measure center $sel]]
+		set multmatrix [list [expr { $f % $dimension }] [ expr { ($f / $dimension) % #dimension }] [ expr { ($f / $dimension) / $dimension }] ]
+		$sel moveby [vecscale $offset $multmatrix]
+		$sel delete
+	}
+	$asel delete
+}
 proc makelignincoordinates {inputdir {outdir .}} {
+	global env
+	topology [file join $env(LIGNINBUILDERDIR) top_lignin.top]
 	set psflist [lsort [glob [file join $inputdir "*psf"]]]
 	puts $psflist
 
@@ -203,8 +223,8 @@ proc makelignincoordinates {inputdir {outdir .}} {
 		placemonomers $mid $monomerlist
 		set fitcommands [readpsfremarks $psf]
 		applyfitcommands $mid $fitcommands
-
-		applyterminalpatches $mid $outdir [file rootname $psf]
+		separatelignins $mid
+		applyterminalpatches $mid [file join $inputdir $outdir] [file rootname [file tail $psf]]
 		
 	}
 }
