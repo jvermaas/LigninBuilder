@@ -96,6 +96,7 @@ proc placemonomers {mid monomerlist} {
 }
 proc applyfitcommands {mid fitcommands} {
 	global env
+	set counter 1
 	foreach fitcommand $fitcommands {
 		#animate dup $mid
 		set sel1 [atomselect $mid "name \"C\[1-6\]\" and resid [lindex $fitcommand 1]"]
@@ -104,8 +105,6 @@ proc applyfitcommands {mid fitcommands} {
 		set msel1 [atomselect $mid $mtxt1]
 		set msel2 [atomselect $mid $mtxt2]
 		set name [string tolower [string range [lindex [$sel1 get resname] 0] 0 0][lindex $fitcommand 0][string range [lindex [$sel2 get resname] 0] 0 0]]
-		puts $name
-		puts [lindex $fitcommand 0]
 		if { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 && [string range [lindex $fitcommand 0] 0 1] == "B5" } {
 			set name [string tolower P[lindex $fitcommand 0]]
 		} elseif { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 && ([lindex $fitcommand 0] in [list "BB" "AOG" "GOG"] || [lindex [$sel2 get resname] 0] == "TRCN") } {
@@ -115,7 +114,7 @@ proc applyfitcommands {mid fitcommands} {
 		} elseif { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 } {
 			set name [string tolower P[lindex $fitcommand 0][string range [lindex [$sel2 get resname] 0] 0 0]]
 		} 
-		puts $name
+		#puts $name
 		if { [file exists [file join $env(LIGNINBUILDERDIR) startingstructure $name.js]] == 0 } {
 			error "Can't find appropriate template for $fitcommand"
 		}
@@ -125,6 +124,7 @@ proc applyfitcommands {mid fitcommands} {
 		set ref2 [atomselect $newmol "name \"C\[1-6\]\" and resid 2" frame $frame]
 		$msel1 move [measure fit $sel1 $ref1]
 		$msel2 move [measure fit $sel2 $ref2]
+		#puts "$counter of [llength $fitcommands]"
 		alignmiddleselection $mid [lindex $fitcommand 1] [lindex $fitcommand 2] $newmol $frame
 		$sel1 delete
 		$sel2 delete
@@ -137,6 +137,7 @@ proc applyfitcommands {mid fitcommands} {
 		# 	animate write js [format "$outdir/initial-$segname-%03d.js" $commandnumber] waitfor all $mid
 		# 	incr commandnumber
 		# }
+		incr counter
 	}
 }
 proc applyterminalpatches {mid outdir segname} {
@@ -190,12 +191,12 @@ proc separatelignins {mid} {
 	set mw [vecsum [$asel get mass]]
 	set radius [expr {6 * (($mw * 0.001) ** (1.0/3.0))}]
 	set nfrags [llength [lsort -unique [$asel get fragment]]]
-	set dimension [expr {ceil( $nfrags ** (1.0/3.0))}]
+	set dimension [expr {int(ceil( $nfrags ** (1.0/3.0)))}]
 	set offset [expr {2 * $radius / $dimension}]
 	for { set f 0 } { $f < $nfrags } { incr f } {
 		set sel [atomselect $mid "fragment $f"]
 		$sel moveby [vecscale -1 [measure center $sel]]
-		set multmatrix [list [expr { $f % $dimension }] [ expr { ($f / $dimension) % #dimension }] [ expr { ($f / $dimension) / $dimension }] ]
+		set multmatrix [list [expr { $f % $dimension }] [ expr { ($f / $dimension) % $dimension }] [ expr { ($f / $dimension) / $dimension }] ]
 		$sel moveby [vecscale $offset $multmatrix]
 		$sel delete
 	}
@@ -205,7 +206,6 @@ proc makelignincoordinates {inputdir {outdir .}} {
 	global env
 	topology [file join $env(LIGNINBUILDERDIR) top_lignin.top]
 	set psflist [lsort [glob [file join $inputdir "*psf"]]]
-	puts $psflist
 
 	foreach psf $psflist {
 		set mid [mol new $psf]
@@ -219,13 +219,11 @@ proc makelignincoordinates {inputdir {outdir .}} {
 		}
 		set c1sel [atomselect top "name C1"]; #This works because all lignin monomers have a C1 atom that remains unmodified.
 		set monomerlist [$c1sel get resname]
-		puts $monomerlist
 		placemonomers $mid $monomerlist
 		set fitcommands [readpsfremarks $psf]
 		applyfitcommands $mid $fitcommands
 		separatelignins $mid
 		applyterminalpatches $mid [file join $inputdir $outdir] [file rootname [file tail $psf]]
-		
 	}
 }
 proc makelignin {monomerlist patchdescription {segname L} {outdir .}} {
@@ -351,23 +349,26 @@ proc makelignin {monomerlist patchdescription {segname L} {outdir .}} {
 	#animate write dcd "$segname.dcd" waitfor all $mid
 }
 proc expandselections {sel1 sel2 {mid top}} {
+	set frag [lsort -integer -unique [$sel1 get fragment]]
 	set idx1 [$sel1 get index]
 	set idx2 [$sel2 get index]
+	set reslist2 [lsort -integer -unique [$sel2 get residue]]
 	#Expand the tree.
-	set newsel1 [atomselect $mid "index $idx1 [join [$sel1 getbonds]] and not same residue as index $idx2"]
+	set newsel1 [atomselect $mid "fragment $frag and index $idx1 [join [$sel1 getbonds]] and not residue $reslist2"]
 	set nidx1 [$newsel1 get index]
-	set newsel2 [atomselect $mid "index $idx2 [join [$sel2 getbonds]] and not same residue as index $nidx1"]
+	set reslist1 [lsort -integer -unique [$newsel1 get residue]]
+	set newsel2 [atomselect $mid "fragment $frag and index $idx2 [join [$sel2 getbonds]] and not residue $reslist1"]
 	set iteration 0
 	#Keep expanding the selections until we are out of stuff to expand to on both sides.
 	while { [$sel1 num] != [$newsel1 num] || [$sel2 num] != [$newsel2 num] } {
 		#These next two commands short-circuit alot of needless atom-selecting when one of the two selections is complete.
 		if { [$sel1 num] == [$newsel1 num] } {
 			$newsel2 delete
-			set newsel2 [atomselect $mid "(same fragment as index $nidx2) and not same residue as index $nidx1"]
+			set newsel2 [atomselect $mid "fragment $frag and not residue $reslist1"]
 		}
 		if { [$sel2 num] == [$newsel2 num] } {
 			$newsel1 delete
-			set newsel1 [atomselect $mid "(same fragment as index $nidx1) and not same residue as index $nidx2"]
+			set newsel1 [atomselect $mid "fragment $frag and not residue $reslist2"]
 		}
 		if { $iteration } {
 			$sel1 delete
@@ -377,9 +378,11 @@ proc expandselections {sel1 sel2 {mid top}} {
 		set sel1 $newsel1
 		set sel2 $newsel2
 		set nidx2 [$newsel2 get index]
-		set newsel1 [atomselect $mid "index $nidx1 [join [$sel1 getbonds]] and not same residue as index $nidx2"]
+		set reslist2 [lsort -integer -unique [$sel2 get residue]]
+		set newsel1 [atomselect $mid "index $nidx1 [join [$sel1 getbonds]] and not residue $reslist2"]
 		set nidx1 [$newsel1 get index]
-		set newsel2 [atomselect $mid "index $nidx2 [join [$sel2 getbonds]] and not same residue as index $nidx1"]
+		set reslist1 [lsort -integer -unique [$newsel1 get residue]]
+		set newsel2 [atomselect $mid "index $nidx2 [join [$sel2 getbonds]] and not residue $reslist1"]
 	}
 	set txt1 "index [$newsel1 get index]"
 	set txt2 "index [$newsel2 get index]"
@@ -411,17 +414,21 @@ proc alignmiddleselection {mid r1 r2 newmol f} {
 	set highsel [atomselect $newmol "resid 2 and index $idx"]
 	if { [$lowsel num] } {
 		set lsel [atomselect $mid "resid $r1 and name [$lowsel get name]"]
-		$lowsel delete
-		set lowsel [atomselect $newmol "resid 1 and name [$lsel get name]" frame $f]
-		$lsel set {x y z} [$lowsel get {x y z}]
+		if { [$lsel num] } {
+			$lowsel delete
+			set lowsel [atomselect $newmol "resid 1 and name [$lsel get name]" frame $f]
+			$lsel set {x y z} [$lowsel get {x y z}]
+		}
 		$lsel delete
 	}
 	$lowsel delete
 	if { [$highsel num] } {
 		set hsel [atomselect $mid "resid $r2 and name [$highsel get name]"]
-		$highsel delete
-		set highsel [atomselect $newmol "resid 2 and name [$hsel get name]" frame $f]
-		$hsel set {x y z} [$highsel get {x y z}]
+		if { [$hsel num] } {
+			$highsel delete
+			set highsel [atomselect $newmol "resid 2 and name [$hsel get name]" frame $f]
+			$hsel set {x y z} [$highsel get {x y z}]
+		}
 		$hsel delete
 	}
 	$highsel delete
