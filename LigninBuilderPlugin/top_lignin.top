@@ -483,6 +483,52 @@ ATOM H1   HLGR61   0.115 ! C1-H1
 ATOM C1   CLG2R61 -0.115 ! 
 BOND  H1   C1  
 
+PRES O4AL 0.00 ! Creates an propyl aldehyde stub such as when B1 is created.
+DELETE ATOM HO4
+ATOM C4   CLG2R6B  0.155
+ATOM O4   OLG301  -0.350
+ATOM CAB  CG311    0.264
+ATOM CAA  CG2O4    0.150
+ATOM CAC  CG321    0.049
+ATOM HAB  HGA1     0.090
+ATOM OAA  OG2D1   -0.400
+ATOM HAA  HGR52    0.090
+ATOM OAC  OG311   -0.648
+ATOM HAC1 HGA2     0.090
+ATOM HAC2 HGA2     0.090
+ATOM HOAC HGP1     0.420
+BOND O4 CAB CAB CAA CAB CAC CAB HAB
+BOND CAA OAA CAA HAA OAC HOAC
+BOND CAC OAC CAC HAC1 CAC HAC2
+
+PRES C1AL 0.00 ! Creates an propyl aldehyde stub such as when B1 is created.
+DELETE ATOM C7 
+DELETE ATOM H7 
+DELETE ATOM O7 
+DELETE ATOM HO7
+DELETE ATOM C8 
+DELETE ATOM H8 
+DELETE ATOM O8 
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM CAB  CG311    0.047
+ATOM CAA  CG2O4    0.175
+ATOM CAC  CG321    0.046
+ATOM HAB  HGA1     0.090
+ATOM OAA  OG2D1   -0.400
+ATOM HAA  HGR52    0.090
+ATOM OAC  OG311   -0.648
+ATOM HAC1 HGA2     0.090
+ATOM HAC2 HGA2     0.090
+ATOM HOAC HGP1     0.420
+BOND C1 CAB CAB CAA CAB CAC CAB HAB
+BOND CAA OAA CAA HAA OAC HOAC
+BOND CAC OAC CAC HAC1 CAC HAC2
+
 ! DIMERS!!! Unless otherwise stated, it is assumed that two of the typical monomers (CAT, GUAI, SYR, or PHP)
 ! without patches applied are merged together.
 PRES 4O5 0.00 ! 4-O-5 Linkage
@@ -783,6 +829,37 @@ DELETE ATOM 2HO4         ! |    /          \
 ATOM 2C4  CLG2R6B  0.182 !1C3--1C2         2C5 
 ATOM 2O4  OLG301  -0.380 ! 
 BOND 1C1   2O4  
+
+! These are additional patches for lignin that are not explicitly parameterized. Useful for making benzalcohols and things like gallate.
+
+PRES C5OH 0.00 ! Adds a hydroxyl to C5. Used to create gallate from CAT, or 3-O-methylgallate from GUAI
+DELETE ATOM H5
+ATOM C5   CLG2R6A  0.075
+ATOM O5   OLG311  -0.495
+ATOM HO5  HLGP1    0.420
+BOND C5 O5 O5 HO5
+
+PRES C1OH 0.00 ! Adds a hydroxyl to C1 after LCH has been applied.
+DELETE ATOM H1
+ATOM C1   CLG2R6A  0.075
+ATOM O1   OLG311  -0.495
+ATOM HO1  HLGP1    0.420
+BOND C1 O1 O1 HO1
+
+PRES BALC 0.00 ! Creates benzylalcohol from a monomer.
+DELETE ATOM C8
+DELETE ATOM H8
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM C7   CLG321   0.060
+ATOM H7A   HLGA2   0.090
+ATOM H7    HLGA2   0.090
+BOND H7A C7
 
 ! These sugars are not explicitly parameterized. We instead do the appropriate typeconversions so that patches
 ! appropriate for 5-membered rings are appropriate for 6-membered rings.
