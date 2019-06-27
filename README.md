@@ -66,6 +66,19 @@ package require ligninbuilder
 ```
 The last argument is added into the NAMD configuration file right before minimization, and in this case serves to provide NAMD with the extra parameters it requires for the spirodienone. The minimized the structures will be in the `output` directory, and ready for further simulation.
 
+## Lignin-KMC
+
+For arbitrary natural lignin, it is possible to use another python package, [Lignin-KMC](https://github.com/michaelorella/lignin-kmc) to generate lignin topologies suitable for 3D structure generation.
+The basic workflow for preparing structures like this would be to use Lignin-KMC to generate a psfgen script, which VMD can then interpret and feed into LigninBuilder.
+An example of this workflow is in the LigninKMCdemo directory, with the following two lines being sufficient (using the command line arguments for VMD).
+
+```bash
+python3 step1.py
+vmd -e step2.tcl
+```
+
+Minimization and further simulation would then proceed as in the previous examples.
+
 ## Citation
 
 If you found this useful for your own scientific work, please read and cite:
