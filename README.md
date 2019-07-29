@@ -77,7 +77,7 @@ python3 step1.py
 vmd -e step2.tcl
 ```
 
-Minimization and further simulation would then proceed as in the previous examples.
+Minimization and further simulation would then proceed as in the previous examples, with an example VMD script that works for the example above contained as `step3.tcl`.
 
 ## Citation
 
