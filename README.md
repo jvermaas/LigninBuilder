@@ -94,3 +94,10 @@ Systematic parameterization of lignin for the CHARMM force field
 Josh V. Vermaas, Loukas Petridis, John Ralph, Michael F. Crowley, and Gregg T. Beckham
 Green Chemistry 2019 21, 109-122
 DOI: [10.1039/C8GC03209B](https://dx.doi.org/10.1039/C8GC03209B)
+
+If you want to make random natural lignins yourself, I highly recommend [Lignin-KMC](https://github.com/michaelorella/lignin-kmc).
+
+Lignin-KMC: A Toolkit for Simulating Lignin Biosynthesis
+Michael J. Orella, Terry Z. H. Gani, Josh V. Vermaas, Michael L. Stone, Eric M. Anderson, Gregg T. Beckham, Fikile R. Brushett, and Yuriy Román-Leshkov
+ACS Sustainable Chemistry & Engineering 2019
+DOI: [10.1021/acssuschemeng.9b03534](https://dx.doi.org/10.1021/acssuschemeng.9b03534)
