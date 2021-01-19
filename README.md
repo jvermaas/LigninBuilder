@@ -13,7 +13,7 @@ To install LigninBuilder so that it is recognized every time VMD starts, the `la
 
 ## Usage
 
-Once installed, the typical workflow is to build the lignin structures starting from an existing library, and subsequently minimizing the structures. An example using the included library for spruce is done as follows in VMD's TkConsole:
+Once installed, the typical workflow is to build the lignin structures starting from an existing library, and subsequently minimizing the structures. An example using the included library for miscanthus is done as follows in VMD's TkConsole:
 ```tcl
 package require ligninbuilder
 ::ligninbuilder::buildfromlibrary "/home/user/LigninBuilder/libraries/Miscanthus Library.txt" Miscanthus
