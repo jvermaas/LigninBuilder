@@ -1,0 +1,11 @@
+ Log file for Schulz-Zimm distribution
+ Number of chain types:            1
+ Tolerance (0,1):    5.0000000000000003E-002
+ Maximum attempts:         3000
+ ************************************************
+
+ Generating list for chain type            1
+ Chain details
+ -------------
+Type   Target_PDI_val   Num_of_chains   Inp_Mn   Out_Mn   Out_Mw   Out_PDI
+1   1.5000 10 22   29.7000   43.0000    1.4782

@@ -1,0 +1,917 @@
+*>>>>>>>>CHARMM  Parameters for Lignin <<<<<<
+* Derived from the original work of Loukas Petridis May 2012, extended by Josh Vermaas 2017
+36 1
+
+MASS -1 CLG2DC1 12.0110 ! 
+MASS -1 CLG2DC2 12.0110 ! 
+MASS -1 CLG2O2  12.0110 ! 
+MASS -1 CLG2O3  12.0110 ! 
+MASS -1 CLG2O4  12.0110 ! 
+MASS -1 CLG2R61 12.0110 ! 
+MASS -1 CLG2R62 12.0110 ! 
+MASS -1 CLG2R63 12.0110 ! 
+MASS -1 CLG2R67 12.0110 ! 
+MASS -1 CLG2RC0 12.0110 ! 
+MASS -1 CLG311  12.0110 ! 
+MASS -1 CLG321  12.0110 ! 
+MASS -1 CLG331  12.0110 ! 
+MASS -1 CLG3C51 12.0110 ! 
+MASS -1 CLG3C52 12.0110 ! 
+MASS -1 CLG3RC1 12.0110 ! 
+MASS -1 CLG2R6A 12.0110 ! 
+MASS -1 CLG2R6B 12.0110 ! 
+MASS -1 HLGA1    1.0080 ! 
+MASS -1 HLGA2    1.0080 ! 
+MASS -1 HLGA3    1.0080 ! 
+MASS -1 HLGA4    1.0080 ! 
+MASS -1 HLGP1    1.0080 ! 
+MASS -1 HLGR52   1.0080 ! 
+MASS -1 HLGR61   1.0080 ! 
+MASS -1 HLGR62   1.0080 ! 
+MASS -1 OLG2D1  15.9994 ! 
+MASS -1 OLG2D2  15.9994 ! 
+MASS -1 OLG2D4  15.9994 ! 
+MASS -1 OLG301  15.9994 ! 
+MASS -1 OLG302  15.9994 ! 
+MASS -1 OLG311  15.9994 ! 
+MASS -1 OLG3C51 15.9994 ! 
+MASS -1 OLG3R60 15.9994 ! 
+
+DEFA FIRS NONE LAST NONE
+AUTO ANGLES DIHE
+
+! To enable easier comparison with the charges determined by CGenFF, they are provided in the comments,
+! along with the difference between the original CGenFF charges and the new ones.
+
+RESI  CAT 0.00 ! catechyl C-lignin 
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.111 -0.004 !        O3-HO3  H2
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !          \    /
+ATOM C3   CLG2R6A  0.075 !  0.106 -0.031 ! HO4       C3==C2    H7  H8  H91   HO9
+ATOM O3   OLG311  -0.495 ! -0.530  0.035 !    \     /     \    |   |   |    /
+ATOM HO3  HLGP1    0.420 !  0.420  0.000 !     O4--C4      C1--C7--C8--C9-O9
+ATOM C4   CLG2R6A  0.075 !  0.106 -0.031 !          \\    //   |   |   |
+ATOM O4   OLG311  -0.495 ! -0.530  0.035 !           C5--C6    O7  O8  H92
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 !            |   |      \   \
+ATOM C5   CLG2R61 -0.115 ! -0.114 -0.001 !            H5  H6     HO7 HO8       
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG2R61  0.000 !  0.009 -0.009 ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   HO3  C4   O4   C4   C5   O4   HO4 
+BOND  C5   H5   C1   C7   C7   H7   C7   O7  
+BOND  C7   C8   O7   HO7  C8   H8   C8   O8  
+BOND  C8   C9   O8   HO8  C9   H91  C9   H92 
+BOND  C9   O9   O9   HO9 
+
+
+RESI GUAI 0.00 ! guaiacyl, G-lignin
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !        O3-C10  H2
+ATOM C3   CLG2R6B  0.115 !  0.223 -0.108 !          \    /
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 ! HO4       C3==C2    H7  H8  H91   HO9
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !    \     /     \    |   |   |    /
+ATOM H101 HLGA3    0.090 !  0.090  0.000 !     O4--C4      C1--C7--C8--C9-O9
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !          \\    //   |   |   |
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !           C5--C6    O7  O8  H92
+ATOM C4   CLG2R6A  0.075 !  0.156 -0.081 !           |   |      \   \
+ATOM O4   OLG311  -0.495 ! -0.584  0.089 !           H5  H6      HO7 HO8
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM C5   CLG2R61 -0.115 ! -0.116  0.001 ! 
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG2R61  0.000 !  0.007 -0.007 ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   O4   C4   C5   O4   HO4  C5   H5  
+BOND  C1   C7   C7   H7   C7   O7   C7   C8  
+BOND  O7   HO7  C8   H8   C8   O8   C8   C9  
+BOND  O8   HO8  C9   H91  C9   H92  C9   O9  
+BOND  O9   HO9 
+
+
+RESI  PHP 0.00 ! p-hydroxyphenyl, H-lignin
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 !          H3   H2
+ATOM C2   CLG2R61 -0.115 ! -0.109 -0.006 !           |    |
+ATOM H2   HLGR61   0.115 !  0.115  0.000 ! HO4       C3==C2    H7  H8  H91   HO9
+ATOM C3   CLG2R61 -0.115 ! -0.117  0.002 !    \     /     \    |   |   |    /
+ATOM H3   HLGR61   0.115 !  0.115  0.000 !     O4--C4      C1--C7--C8--C9-O9
+ATOM C4   CLG2R6A  0.075 !  0.108 -0.033 !          \\    //   |   |   |
+ATOM O4   OLG311  -0.495 ! -0.530  0.035 !           C5--C6    O7  O8  H92
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 !           |   |      \   \ 
+ATOM C5   CLG2R61 -0.115 ! -0.117  0.002 !           H5  H6      HO7 HO8  
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG2R61  0.000 !  0.006 -0.006 ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   H3  
+BOND  C4   O4   C4   C5   O4   HO4  C5   H5  
+BOND  C1   C7   C7   H7   C7   O7   C7   C8  
+BOND  O7   HO7  C8   H8   C8   O8   C8   C9  
+BOND  O8   HO8  C9   H91  C9   H92  C9   O9  
+BOND  O9   HO9 
+
+
+RESI  SYR 0.00 ! Syringyl, S-lignin
+!
+ATOM C6   CLG2R61 -0.115 ! -0.109 -0.006 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.109 -0.006 !        O3-C10  H2
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !          \    /
+ATOM C3   CLG2R6B  0.115 !  0.224 -0.109 ! HO4       C3==C2    H7  H8  H91   HO9
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 !    \     /     \    |   |   |    /
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !     O4--C4      C1--C7--C8--C9-O9
+ATOM H101 HLGA3    0.090 !  0.090  0.000 !          \\    //   |   |   |
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !           C5--C6    O7  O8  H92
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !           /     \    \   \
+ATOM C4   CLG2R6A  0.075 !  0.204 -0.129 !         O5-C11   H6  HO7  HO8
+ATOM O4   OLG311  -0.495 ! -0.638  0.143 ! 
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM C5   CLG2R6B  0.115 !  0.224 -0.109 ! 
+ATOM O5   OLG301  -0.329 ! -0.391  0.062 ! 
+ATOM C11  CLG331  -0.056 ! -0.100  0.044 ! 
+ATOM H111 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM H112 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM H113 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM C1   CLG2R61  0.000 !  0.008 -0.008 ! 
+ATOM C7   CLG311   0.150 !  0.134  0.016 ! 
+ATOM H7   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O7   OLG311  -0.660 ! -0.653 -0.007 ! 
+ATOM HO7  HLGP1    0.420 !  0.413  0.007 ! 
+ATOM C8   CLG311   0.150 !  0.148  0.002 ! 
+ATOM H8   HLGA1    0.090 !  0.090  0.000 ! 
+ATOM O8   OLG311  -0.660 ! -0.655 -0.005 ! 
+ATOM HO8  HLGP1    0.420 !  0.419  0.001 ! 
+ATOM C9   CLG321   0.042 !  0.051 -0.009 ! 
+ATOM O9   OLG311  -0.642 ! -0.649  0.007 ! 
+ATOM HO9  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H91  HLGA2    0.090 !  0.090  0.000 ! 
+ATOM H92  HLGA2    0.090 !  0.090  0.000 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   O4   C4   C5   O4   HO4  C5   O5  
+BOND  O5   C11  C11  H111 C11  H112 C11  H113
+BOND  C1   C7   C7   H7   C7   O7   C7   C8  
+BOND  O7   HO7  C8   H8   C8   O8   C8   C9  
+BOND  O8   HO8  C9   H91  C9   H92  C9   O9  
+BOND  O9   HO9 
+
+RESI FERU 0.00 ! ferulic acid, for lignin:hemicellulose crosslinks
+!
+ATOM C6   CLG2R61 -0.115 ! -0.112 -0.003 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.112 -0.003 !        O3-C10  H2
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !          \    /
+ATOM C3   CLG2R6B  0.115 !  0.223 -0.108 ! HO4       C3==C2            OC   HO9
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 !    \     /     \            ||   /
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !     O4--C4      C1--C7==C8--C9-O9
+ATOM H101 HLGA3    0.090 !  0.090  0.000 !           \\    //   |   | 
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !            C5--C6    H7  H8
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !             |   |
+ATOM C4   CLG2R6A  0.075 !  0.156 -0.081 !             H5  H6
+ATOM O4   OLG311  -0.495 ! -0.584  0.089 ! 
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 ! 
+ATOM C5   CLG2R61 -0.115 ! -0.116  0.001 ! 
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG2R61  0.000 !  0.000  0.000 ! 
+ATOM C7   CLG2DC1 -0.150 ! -0.151  0.001 ! 
+ATOM H7   HLGA4    0.150 !  0.150  0.000 ! 
+ATOM C8   CLG2DC1 -0.001 ! -0.141  0.140 ! 
+ATOM H8   HLGA4    0.150 !  0.150  0.000 ! 
+ATOM C9   CLG2O2   0.684 !  0.711 -0.027 ! 
+ATOM O9   OLG311  -0.595 ! -0.523 -0.072 ! 
+ATOM HO9  HLGP1    0.420 !  0.429 -0.009 ! 
+ATOM OC   OLG2D1  -0.658 ! -0.624 -0.034 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   O4   C4   C5   O4   HO4  C5   H5  
+BOND  C1   C7   C7   H7   C7   C8   C8   H8  
+BOND  C8   C9   C9   O9   C9   OC   O9   HO9 
+
+
+RESI FERUT -1.00 ! ferulate, for lignin:hemicellulose crosslinks
+!
+ATOM C6   CLG2R61 -0.115 ! -0.112 -0.003 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.112 -0.003 ! 
+ATOM H2   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C3   CLG2R6B  0.115 !  0.223 -0.108 ! 
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 !        O3-C10  H2
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !          \    /
+ATOM H101 HLGA3    0.090 !  0.090  0.000 ! HO4       C3==C2            OC   
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !    \     /     \            ||   _
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !     O4--C4      C1--C7==C8--C9-O9
+ATOM C4   CLG2R6A  0.075 !  0.156 -0.081 !           \\    //   |   | 
+ATOM O4   OLG311  -0.495 ! -0.584  0.089 !            C5--C6    H7  H8
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 !             |   |
+ATOM C5   CLG2R61 -0.115 ! -0.116  0.001 !             H5  H6
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG2R61  0.000 !  0.000  0.000 ! 
+ATOM C7   CLG2DC1 -0.150 ! -0.151  0.001 ! 
+ATOM H7   HLGA4    0.150 !  0.150  0.000 ! 
+ATOM C8   CLG2DC1 -0.298 ! -0.250 -0.048 ! 
+ATOM H8   HLGA4    0.150 !  0.150  0.000 ! 
+ATOM C9   CLG2O3   0.760 !  0.622  0.138 ! 
+ATOM O9   OLG2D2  -0.806 ! -0.760 -0.046 ! 
+ATOM OC   OLG2D2  -0.806 ! -0.760 -0.046 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   O4   C4   C5   O4   HO4  C5   H5  
+BOND  C1   C7   C7   H7   C7   C8   C8   H8  
+BOND  C8   C9   C9   O9   C9   OC  
+
+
+RESI  PCA -1.00 ! p-coumaric acid, for switchgrass  
+!
+ATOM C6   CLG2R61 -0.115 ! -0.112 -0.003 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 !          H3   H2
+ATOM C2   CLG2R61 -0.115 ! -0.112 -0.003 !           |    |
+ATOM H2   HLGR61   0.115 !  0.115  0.000 ! HO4       C3==C2    H7   H8       
+ATOM C3   CLG2R61 -0.115 ! -0.117  0.002 !    \     /     \    |    |        _
+ATOM H3   HLGR61   0.115 !  0.115  0.000 !     O4--C4      C1--C7==C8--C9-O9  
+ATOM C4   CLG2R6A  0.075 !  0.108 -0.033 !          \\    //           || 
+ATOM O4   OLG311  -0.495 ! -0.530  0.035 !           C5--C6            OC
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 !           |   |            
+ATOM C5   CLG2R61 -0.115 ! -0.117  0.002 !           H5  H6          
+ATOM H5   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C1   CLG2R61  0.000 ! -0.001  0.001 ! 
+ATOM C7   CLG2DC1 -0.150 ! -0.151  0.001 ! 
+ATOM H7   HLGA4    0.150 !  0.150  0.000 ! 
+ATOM C8   CLG2DC1 -0.298 ! -0.250 -0.048 ! 
+ATOM H8   HLGA4    0.150 !  0.150  0.000 ! 
+ATOM C9   CLG2O3   0.760 !  0.622  0.138 ! 
+ATOM O9   OLG2D2  -0.806 ! -0.760 -0.046 ! 
+ATOM OC   OLG2D2  -0.806 ! -0.760 -0.046 ! 
+BOND  C6   C5   C6   H6   C6   C1   C2   C1  
+BOND  C2   H2   C2   C3   C3   C4   C3   H3  
+BOND  C4   O4   C4   C5   O4   HO4  C5   H5  
+BOND  C1   C7   C7   H7   C7   C8   C8   H8  
+BOND  C8   C9   C9   O9   C9   OC 
+
+
+RESI TRCN 0.00
+!
+ATOM C6   CLG2R61 -0.115 ! -0.113 -0.002 ! 
+ATOM H6   HLGR61   0.115 !  0.115  0.000 ! 
+ATOM C2   CLG2R61 -0.115 ! -0.113 -0.002 ! 
+ATOM H2   HLGR61   0.115 !  0.115  0.000 !        O3-C10  H2     H8    O9        HO17
+ATOM C3   CLG2R6B  0.115 !  0.226 -0.111 !          \    /        |   //         /
+ATOM O3   OLG301  -0.329 ! -0.391  0.062 ! HO4       C3==C2      C8--C9       O17
+ATOM C10  CLG331  -0.056 ! -0.100  0.044 !    \     /     \     //     \       |
+ATOM H101 HLGA3    0.090 !  0.090  0.000 !     O4--C4      C1--C7       C12--C17
+ATOM H102 HLGA3    0.090 !  0.090  0.000 !          \\    //     \      //     \\
+ATOM H103 HLGA3    0.090 !  0.090  0.000 !           C5--C6       O7--C13       C16--H16
+ATOM C4   CLG2R6A  0.075 !  0.204 -0.129 !           /     \             \      /
+ATOM O4   OLG311  -0.495 ! -0.638  0.143 !         O5-C11   H6           C14==C15
+ATOM HO4  HLGP1    0.420 !  0.420  0.000 !                               /      \
+ATOM C5   CLG2R6B  0.115 !  0.226 -0.111 !                            H14       O15--HO15
+ATOM O5   OLG301  -0.329 ! -0.391  0.062 ! 
+ATOM C11  CLG331  -0.056 ! -0.100  0.044 ! 
+ATOM H111 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM H112 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM H113 HLGA3    0.090 !  0.090  0.000 ! 
+ATOM C1   CLG2R67  0.000 ! -0.000  0.000 ! 
+ATOM C7   CLG2R67  0.445 !  0.267  0.178 ! 
+ATOM O7   OLG3R60 -0.449 ! -0.505  0.056 ! 
+ATOM C8   CLG2R62 -0.463 ! -0.370 -0.093 ! 
+ATOM H8   HLGR62   0.233 !  0.282 -0.049 ! 
+ATOM C9   CLG2R63  0.490 !  0.342  0.148 ! 
+ATOM O9   OLG2D4  -0.515 ! -0.507 -0.008 ! 
+ATOM C12  CLG2R62 -0.395 ! -0.249 -0.146 ! 
+ATOM C13  CLG2R62  0.450 !  0.634 -0.184 ! 
+ATOM C14  CLG2R61 -0.115 ! -0.119  0.004 ! 
+ATOM C15  CLG2R6A  0.075 !  0.110 -0.035 ! 
+ATOM O15  OLG311  -0.495 ! -0.530  0.035 ! 
+ATOM HO15 HLGP1    0.420 !  0.420  0.000 ! 
+ATOM C16  CLG2R61 -0.115 ! -0.119  0.004 ! 
+ATOM C17  CLG2R6A  0.315 !  0.224  0.091 ! 
+ATOM O17  OLG311  -0.531 ! -0.530 -0.001 ! 
+ATOM HO17 HLGP1    0.420 !  0.420  0.000 ! 
+ATOM H14  HLGR61   0.115 !  0.115  0.000 ! 
+ATOM H16  HLGR61   0.115 !  0.115  0.000 ! 
+BOND  C6   H6   C6   C5   C6   C1   C2   C3  
+BOND  C2   H2   C2   C1   C3   C4   C3   O3  
+BOND  O3   C10  C10  H101 C10  H102 C10  H103
+BOND  C4   C5   C4   O4   O4   HO4  C5   O5  
+BOND  O5   C11  C11  H111 C11  H112 C11  H113
+BOND  C1   C7   C7   O7   C7   C8   O7   C13 
+BOND  C8   H8   C8   C9   C9   O9   C9   C12 
+BOND  C12  C13  C12  C17  C13  C14  C14  C15 
+BOND  C14  H14  C15  C16  C15  O15  O15  HO15
+BOND  C16  C17  C16  H16  C17  O17  O17  HO17
+
+! Now we get to the patches. The structures shown are abbreviated, meaning that typically 
+! only the carbon backbone is shown to indicate connectivity, with many implicit hydrogens and oxygens.
+
+!Monomer adjustments
+
+PRES DBBL 0.00 !Form a double bond between C7 and C8
+DELETE ATOM O7
+DELETE ATOM HO7
+DELETE ATOM O8
+DELETE ATOM HO8
+ATOM C7   CLG2DC1 -0.150 !             O9--HO9
+ATOM H7   HLGA4    0.150 !             /
+ATOM C8   CLG2DC1 -0.150 ! C1--C7==C8-C9
+ATOM H8   HLGA4    0.150 ! 
+
+PRES DBAC -1.00 !Create a carboxylate at the 9 position, and form a double bond between C7 and C8
+DELETE ATOM O7
+DELETE ATOM HO7
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM C7   CLG2DC1 -0.150 !              O9
+ATOM H7   HLGA4    0.150 !             //
+ATOM C8   CLG2DC1 -0.298 ! C1--C7==C8-C9
+ATOM H8   HLGA4    0.150 !             \ _
+ATOM C9   CLG2O3   0.760 !             OC
+ATOM O9   OLG2D2  -0.806 ! 
+ATOM OC   OLG2D2  -0.806 ! 
+BOND  OC   C9  
+
+PRES DBAP 0.00 !Create a carboxylic acid at the 9 position, and form a double bond between C7 and C8
+DELETE ATOM O7
+DELETE ATOM HO7
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM C7   CLG2DC1 -0.150 ! 
+ATOM H7   HLGA4    0.150 !              O9-HO9
+ATOM C8   CLG2DC1 -0.001 !             /
+ATOM H8   HLGA4    0.150 ! C1--C7==C8-C9
+ATOM C9   CLG2O2   0.684 !             \\ 
+ATOM O9   OLG311  -0.595 !              OC
+ATOM HO9  HLGP1    0.420 ! 
+ATOM OC   OLG2D1  -0.658 ! 
+BOND  OC   C9  
+
+PRES DBAL 0.00 !Create an aldehyde at the 9 position, and form a double bond between C7 and C8
+DELETE ATOM O7
+DELETE ATOM HO7
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM HO9
+DELETE ATOM H92
+ATOM C7   CLG2DC1 -0.150 !              O9
+ATOM H7   HLGA4    0.150 !             //
+ATOM C8   CLG2DC1  0.079 ! C1--C7==C8-C9
+ATOM H8   HLGA4    0.150 !             \ 
+ATOM C9   CLG2O4   0.155 !             H91
+ATOM O9   OLG2D1  -0.481 ! 
+ATOM H91  HLGR52   0.097 ! 
+
+PRES LCAC -1.00 !Analogous to DBAC, except it attaches the carboxylate directly to the aromatic ring.
+DELETE ATOM H7
+DELETE ATOM HO7
+DELETE ATOM C8
+DELETE ATOM H8
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM C1   CLG2R61 -0.195 !      O7 
+ATOM C7   CLG2O3   0.807 !     // 
+ATOM O7   OLG2D2  -0.806 !C1--C7 
+ATOM OC   OLG2D2  -0.806 !      \ _ 
+BOND  OC   C7            !      OC
+
+PRES LCAL 0.00 !Analogous to DBAL, except it attaches the aldehyde directly to the aromatic ring.
+DELETE ATOM HO7
+DELETE ATOM C8
+DELETE ATOM H8
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92          !      O7 
+ATOM C1   CLG2R61  0.093 !     // 
+ATOM C7   CLG2O4   0.294 !C1--C7 
+ATOM H7   HLGR52   0.084 !      \  
+ATOM O7   OLG2D1  -0.471 !      H7
+
+
+PRES LCAP 0.00 !Analogous to DBAP, except it attaches the carboxylic acid directly to the aromatic ring.
+DELETE ATOM H7
+DELETE ATOM C8
+DELETE ATOM H8
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM C1   CLG2R61  0.129 !      O7-HO7
+ATOM C7   CLG2O2   0.395 !     / 
+ATOM O7   OLG311  -0.504 !C1--C7 
+ATOM HO7  HLGP1    0.420 !     \\  
+ATOM OC   OLG2D1  -0.440 !      OC
+BOND  OC   C7  
+
+PRES LCH 0.00 !Attaches a hydrogen to C1 and truncates the rest.
+DELETE ATOM C7
+DELETE ATOM H7
+DELETE ATOM O7
+DELETE ATOM HO7
+DELETE ATOM C8
+DELETE ATOM H8
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM H1   HLGR61   0.115 ! C1-H1
+ATOM C1   CLG2R61 -0.115 ! 
+BOND  H1   C1  
+
+PRES O4AL 0.00 ! Creates an propyl aldehyde stub such as when B1 is created.
+DELETE ATOM HO4
+ATOM C4   CLG2R6B  0.155
+ATOM O4   OLG301  -0.350
+ATOM CAB  CG311    0.264
+ATOM CAA  CG2O4    0.150
+ATOM CAC  CG321    0.049
+ATOM HAB  HGA1     0.090
+ATOM OAA  OG2D1   -0.400
+ATOM HAA  HGR52    0.090
+ATOM OAC  OG311   -0.648
+ATOM HAC1 HGA2     0.090
+ATOM HAC2 HGA2     0.090
+ATOM HOAC HGP1     0.420
+BOND O4 CAB CAB CAA CAB CAC CAB HAB
+BOND CAA OAA CAA HAA OAC HOAC
+BOND CAC OAC CAC HAC1 CAC HAC2
+
+PRES C1AL 0.00 ! Creates an propyl aldehyde stub such as when B1 is created.
+DELETE ATOM C7 
+DELETE ATOM H7 
+DELETE ATOM O7 
+DELETE ATOM HO7
+DELETE ATOM C8 
+DELETE ATOM H8 
+DELETE ATOM O8 
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM CAB  CG311    0.047
+ATOM CAA  CG2O4    0.175
+ATOM CAC  CG321    0.046
+ATOM HAB  HGA1     0.090
+ATOM OAA  OG2D1   -0.400
+ATOM HAA  HGR52    0.090
+ATOM OAC  OG311   -0.648
+ATOM HAC1 HGA2     0.090
+ATOM HAC2 HGA2     0.090
+ATOM HOAC HGP1     0.420
+BOND C1 CAB CAB CAA CAB CAC CAB HAB
+BOND CAA OAA CAA HAA OAC HOAC
+BOND CAC OAC CAC HAC1 CAC HAC2
+
+! DIMERS!!! Unless otherwise stated, it is assumed that two of the typical monomers (CAT, GUAI, SYR, or PHP)
+! without patches applied are merged together.
+PRES 4O5 0.00 ! 4-O-5 Linkage
+DELETE ATOM 1HO4         ! --1C3            2C4==
+ATOM 1C4  CLG2R6B  0.181 !    \\            /
+ATOM 1O4  OLG301  -0.362 !     1C4--1O4--2C5
+DELETE ATOM 2H5          !     /           \\
+ATOM 2C5  CLG2R6B  0.181 ! ==1C5            2C6--
+BOND 1O4   2C5  
+
+PRES 55 0.00 !5-5 linkage
+DELETE ATOM 1H5          ! --1C4       2C4--
+ATOM 1C5  CLG2R67  0.000 !    \\       / 
+DELETE ATOM 2H5          !     1C5--2C5
+ATOM 2C5  CLG2R67  0.000 !     /      \\ 
+BOND 1C5   2C5           ! ==1C6       2C6--
+
+PRES AO4 0.00 ! alpha-O-4 linkage
+DELETE ATOM 1O7          ! --1C6      1C8--
+DELETE ATOM 1HO7         !    \\      /
+ATOM 1C7  CLG311   0.112 !     1C1--1C7       2C3==
+DELETE ATOM 2HO4         !     /      \      /
+ATOM 2C4  CLG2R6B  0.147 ! ==1C2       2O4--2C4
+ATOM 2O4  OLG301  -0.349 !                   \\
+BOND 1C7   2O4           !                   2C5--
+
+
+PRES B1 0.00 ! beta-1 linkage.
+DELETE ATOM 1O8
+DELETE ATOM 1HO8
+ATOM 1C8  CLG311  -0.090 !          1C9
+DELETE ATOM 2C7          !          /
+DELETE ATOM 2H7          ! -1C7--1C8
+DELETE ATOM 2O7          !          \
+DELETE ATOM 2HO7         !          2C1--2C2
+DELETE ATOM 2C8          !         //      \\
+DELETE ATOM 2H8          !        2C6
+DELETE ATOM 2O8          !         |
+DELETE ATOM 2HO8
+DELETE ATOM 2C9
+DELETE ATOM 2O9
+DELETE ATOM 2HO9
+DELETE ATOM 2H91
+DELETE ATOM 2H92
+BOND 1C8   2C1  
+
+!Because the charge on 2C3 changes depending on the substituent, there are 3 different beta-5 patches.
+!This happens because 2C4 is part of the charge group with 2C3 and its substituents.
+PRES B5C 0.00 !beta-5 to caffeyl
+DELETE ATOM 1O7
+DELETE ATOM 1HO7
+DELETE ATOM 1O8
+DELETE ATOM 1HO8         !  2O3
+ATOM 1C7  CLG3C51  0.173 !   |
+ATOM 1C8  CLG3C51 -0.141 !--2C3
+DELETE ATOM 2HO4         !    \\
+DELETE ATOM 2H5          !    2C4--2O4
+ATOM 2C6  CLG2R61 -0.266 !    /     |     /
+ATOM 2H6  HLGR61   0.150 !==2C5    1C7--1C1
+ATOM 2C3  CLG2R6A  0.083 !     \  /      \\
+ATOM 2O3  OLG311  -0.502 !     1C8
+ATOM 2C4  CLG2RC0 -0.001 !      | 
+ATOM 2O4  OLG3C51 -0.299 !     1C9
+ATOM 2C5  CLG2RC0  0.203 ! 
+BOND 1C7   2O4  1C8   2C5  
+
+PRES B5G 0.00 !beta-5 to guacyl
+DELETE ATOM 1O7
+DELETE ATOM 1HO7
+DELETE ATOM 1O8
+DELETE ATOM 1HO8
+ATOM 1C7  CLG3C51  0.173 !  2O3-2C10
+ATOM 1C8  CLG3C51 -0.141 !   | 
+DELETE ATOM 2HO4         !--2C3
+DELETE ATOM 2H5          !    \\
+ATOM 2C6  CLG2R61 -0.266 !    2C4--2O4 
+ATOM 2H6  HLGR61   0.150 !    /     |     / 
+ATOM 2C3  CLG2R6B  0.129 !==2C5    1C7--1C1 
+ATOM 2O3  OLG301  -0.323 !     \  /      \\ 
+ATOM 2C10 CLG331  -0.086 !     1C8 
+ATOM 2C4  CLG2RC0  0.010 !      |  
+ATOM 2O4  OLG3C51 -0.299 !     1C9 
+ATOM 2C5  CLG2RC0  0.203 ! 
+BOND 1C7   2O4  1C8   2C5  
+
+PRES B5P 0.00 !beta-5 to para-hydroxyphenyl
+DELETE ATOM 1O7
+DELETE ATOM 1HO7
+DELETE ATOM 1O8
+DELETE ATOM 1HO8
+ATOM 1C7  CLG3C51  0.173 !  2H3 
+ATOM 1C8  CLG3C51 -0.141 !   | 
+DELETE ATOM 2HO4         !--2C3
+DELETE ATOM 2H5          !    \\
+ATOM 2C6  CLG2R61 -0.266 !    2C4--2O4 
+ATOM 2H6  HLGR61   0.150 !    /     |     / 
+ATOM 2C3  CLG2R61 -0.150 !==2C5    1C7--1C1 
+ATOM 2H3  HLGR61   0.137 !     \  /      \\ 
+ATOM 2C4  CLG2RC0  0.013 !     1C8 
+ATOM 2O4  OLG3C51 -0.299 !      |  
+ATOM 2C5  CLG2RC0  0.203 !     1C9 
+BOND 1C7   2O4  1C8   2C5  
+
+PRES BB 0.00 !beta-beta linkage
+DELETE ATOM 1HO7
+DELETE ATOM 1O8
+DELETE ATOM 1HO8
+DELETE ATOM 1O9
+DELETE ATOM 1HO9
+ATOM 1C7  CLG3C51  0.159 ! 
+ATOM 1O7  OLG3C51 -0.403 ! 1C1--1C7--1C8--1C9
+ATOM 1C8  CLG3RC1 -0.124 !      /     |     \
+ATOM 1C9  CLG3C52  0.008 !    1O7     |     2O7
+DELETE ATOM 2HO7         !      \     |     /
+DELETE ATOM 2O8          !      2C9--2C8--2C7--2C1
+DELETE ATOM 2HO8         !
+DELETE ATOM 2O9          !
+DELETE ATOM 2HO9         !
+ATOM 2C7  CLG3C51  0.159 ! 
+ATOM 2O7  OLG3C51 -0.403 ! 
+ATOM 2C8  CLG3RC1 -0.124 ! 
+ATOM 2C9  CLG3C52  0.008 ! 
+BOND 1O7   2C9  1C8   2C8  1C9   2O7  
+
+PRES BDO 0.00 !Benzodioxane linkage. Only valid if residue 2 is CAT.
+DELETE ATOM 1O7
+DELETE ATOM 1HO7
+DELETE ATOM 1O8          ! ==2C2   1O7  1C1--
+DELETE ATOM 1HO8         !     \  /   \ /
+ATOM 1C7  CLG311   0.139 !     2C3    1C7
+ATOM 1C8  CLG311   0.139 !     ||      |
+DELETE ATOM 2HO3         !     2C4    1C8
+DELETE ATOM 2HO4         !     /  \   /  \
+ATOM 2C3  CLG2R6B  0.102 ! ==2C5   1O8   1C9
+ATOM 2O3  OLG3R60 -0.331 ! 
+ATOM 2C4  CLG2R6B  0.102 ! 
+ATOM 2O4  OLG3R60 -0.331 ! 
+BOND 1C7   2O3  1C8   2O4  
+
+PRES BO4 0.00
+DELETE ATOM 1O8          !           1C9
+DELETE ATOM 1HO8         !           /
+ATOM 1C8  CLG311   0.112 !    1C7--1C8       2C3== 
+DELETE ATOM 2HO4         !    /      \      /
+ATOM 2C4  CLG2R6B  0.147 !==1C1       2O4--2C4 
+ATOM 2O4  OLG301  -0.349 !    \             \\ 
+BOND 1C8   2O4           !                  2C5--
+
+!Ester linkages between lignins
+
+PRES AOA 0.00 ! alpha to alpha ester linkage
+DELETE ATOM 1H7
+DELETE ATOM 1HO7
+DELETE ATOM 1C8
+DELETE ATOM 1H8
+DELETE ATOM 1O8
+DELETE ATOM 1HO8
+DELETE ATOM 1C9
+DELETE ATOM 1O9
+DELETE ATOM 1HO9
+DELETE ATOM 1H91         ! --1C6       1O7
+DELETE ATOM 1H92         !    \\      //
+ATOM 1C1  CLG2R61  0.191 !     1C1--1C7       2C8--
+ATOM 1C7  CLG2O2   0.303 !     /      \       /
+ATOM 1O7  OLG2D1  -0.468 ! ==1C2      2O7--2C7
+DELETE ATOM 2HO7         !                    \
+ATOM 2C7  CLG311   0.212 !                    2C1-- 
+ATOM 2O7  OLG302  -0.328 !                   // 
+BOND 1C7   2O7           !
+
+PRES AOG 0.00 ! alpha to gamma ester linkage
+DELETE ATOM 1H7
+DELETE ATOM 1HO7
+DELETE ATOM 1C8
+DELETE ATOM 1H8
+DELETE ATOM 1O8
+DELETE ATOM 1HO8
+DELETE ATOM 1C9
+DELETE ATOM 1O9
+DELETE ATOM 1HO9
+DELETE ATOM 1H91         !
+DELETE ATOM 1H92         ! --1C6       1O7
+ATOM 1C1  CLG2R61  0.179 !    \\      // 
+ATOM 1C7  CLG2O2   0.401 !     1C1--1C7       2C8-- 
+ATOM 1O7  OLG2D1  -0.454 !     /      \       / 
+DELETE ATOM 2HO9         ! ==1C2      2O9--2C9
+ATOM 2C9  CLG321   0.035 ! 
+ATOM 2O9  OLG302  -0.341 ! 
+BOND 1C7   2O9           ! 
+
+PRES GOA 0.00 ! gamma to alpha ester linkage
+DELETE ATOM 1OC          !         1O9
+ATOM 1C8  CLG2DC1 -0.055 !        //     ||
+ATOM 1C9  CLG2O2   0.534 ! 1C8--1C9      2C1
+ATOM 1O9  OLG2D1  -0.608 !        \      / \
+DELETE ATOM 2HO7         !        2O7--2C7   
+ATOM 2C7  CLG311   0.250 !             |
+ATOM 2O7  OLG302  -0.361 !            2C8--
+BOND 1C9   2O7  
+
+PRES GOG 0.00 ! gamma to gamma ester linkage. Residue 1 assumed to be PCA, or treated with the DBAC patch first.
+ATOM 1C8  CLG2DC1 -0.108 !         1O9 
+ATOM 1C9  CLG2O2   0.681 !        //     
+ATOM 1O9  OLG2D1  -0.618 ! 1C8--1C9       
+ATOM 1OC  OLG302  -0.324 !        \      
+DELETE ATOM 2O9          !        1OC--2C9--2C8--  
+DELETE ATOM 2HO9         !
+ATOM 2C9  CLG321   0.039 ! 
+BOND 1OC   2C9  
+
+!Linkages to sugars and diferulates
+
+PRES FARL 0.00 !Ferulic acid-arabinose linkage. Ester linkage to arabinose C5. Assumes residue 1 is either FERU or has been treated by the DBAP patch
+!See 10.1093/mp/ssp067
+DELETE ATOM 1HO9         !         1OC
+ATOM 1C8  CLG2DC1 -0.123 !        //
+ATOM 1C9  CLG2O2   0.600 !--1C8-1C9 
+ATOM 1O9  OLG302  -0.317 !        \
+ATOM 1OC  OLG2D1  -0.609 !        1O9--2C5--Sugar
+DELETE ATOM 2O5
+DELETE ATOM 2HO5
+ATOM 2C5   CC321   0.119
+BOND 1O9   2C5  
+
+PRES DIFERA 0.00 ! cyclic 8-8 diferulate. Both residues 1 and 2 are expected to be FERU monomers, or equivalently previously treated with the DBAP patch.
+!See 10.1039/C3AN36709F
+DELETE ATOM 1H6
+DELETE ATOM 1H8
+ATOM 1C6  CLG2R61  0.000 ! 
+ATOM 1C8  CLG2DC1  0.021 ! 
+ATOM 1C9  CLG2O2   0.709 ! 
+ATOM 1O9  OLG311  -0.544 ! 
+ATOM 1OC  OLG2D1  -0.585 ! 
+ATOM 2C7  CLG311  -0.090 ! 
+ATOM 2H7  HLGA1    0.090 ! 
+ATOM 2C8  CLG311  -0.080 ! 
+ATOM 2H8  HLGA1    0.090 ! 
+ATOM 2C9  CLG2O2   0.754 ! 
+ATOM 2O9  OLG311  -0.664 ! 
+ATOM 2OC  OLG2D1  -0.541 ! 
+BOND 1C6   2C7  1C8   2C8  
+
+PRES DIFERB 0.00 ! 8-8 diferulate. Both residues 1 and 2 are expected to be FERU monomers, or equivalently previously treated with the DBAP patch.
+!See 10.1039/C3AN36709F
+DELETE ATOM 1H8
+ATOM 1C8  CLG2DC1 -0.115 ! 
+ATOM 1C9  CLG2O2   0.846 ! 
+ATOM 1O9  OLG311  -0.576 ! 
+ATOM 1OC  OLG2D1  -0.575 ! 
+DELETE ATOM 2H8
+ATOM 2C7  CLG2DC2 -0.150 ! 
+ATOM 2C8  CLG2DC2 -0.048 ! 
+ATOM 2C9  CLG2O2   0.764 ! 
+ATOM 2O9  OLG311  -0.575 ! 
+ATOM 2OC  OLG2D1  -0.561 ! 
+BOND 1C8   2C8  
+
+PRES BET1 0.00 ! called alpha-5 in the main text, this is a linkage between a lignin alpha (residue 2) and a sugar (residue 1) C5 atom.
+!See 10.1007/s00425-011-1359-2
+DELETE ATOM 1O5
+DELETE ATOM 1HO5         !                 2C8--
+ATOM 1C5   CC321   0.011 !                 /
+DELETE ATOM 2HO7         ! Sugar-1C5-2O7-2C7
+ATOM 2C7  CLG311   0.115 !                  \
+ATOM 2O7  OLG301  -0.396 !                  2C1--
+BOND 1C5   2O7           !                 //
+
+PRES BET2 0.00 ! called alpha-2 in the main text, this is a linkage between a lignin alpha (residue 2) and a sugar (residue 1) C2 atom.
+!See 10.1007/s00425-011-1359-2
+DELETE ATOM 1O2          !
+DELETE ATOM 1HO2         !  --1C1          2C8--
+ATOM 1C2   CC3151  0.137 !      \         /
+DELETE ATOM 2HO7         !       1C2-2O7-2C7
+ATOM 2C7  CLG311   0.076 !      /          \ 
+ATOM 2O7  OLG301  -0.393 !  --1C3         2C1-- 
+BOND 1C2   2O7           !                //
+
+PRES LIHE 0.00 !called beta-1 in the main text, this is a linkage between a lignin beta (residue 2) and a sugar (residue 1) C1 atom.
+! This is the original linkage.
+DELETE ATOM 1O1
+DELETE ATOM 1HO1
+ATOM 1O4   OC3C51 -0.373 !  1O4            2C9
+ATOM 1C1   CC3152  0.138 ! /   \          /
+ATOM 1C4   CC3153  0.176 !1C4  1C1--2O8--2C8
+DELETE ATOM 2HO8         ! |   /          \
+ATOM 2C8  CLG311   0.092 !1C3--1C2         2C7
+ATOM 2O8  OLG301  -0.303 ! 
+BOND 1C1   2O8  
+
+PRES PGYS 0.00 !called 4-1 in the main text, this is a linkage between O4 of lignin (residue 2) and a sugar (residue 1) C1 atom.
+!See 10.1007/s00425-011-1359-2
+DELETE ATOM 1O1
+DELETE ATOM 1HO1
+ATOM 1O4   OC3C51 -0.402 !  1O4             2C3
+ATOM 1C1   CC3152  0.262 ! /   \           //
+ATOM 1C4   CC3153  0.158 !1C4   1C1--2O4--2C4
+DELETE ATOM 2HO4         ! |    /          \
+ATOM 2C4  CLG2R6B  0.182 !1C3--1C2         2C5 
+ATOM 2O4  OLG301  -0.380 ! 
+BOND 1C1   2O4  
+
+! These are additional patches for lignin that are not explicitly parameterized. Useful for making benzalcohols and things like gallate.
+
+PRES C5OH 0.00 ! Adds a hydroxyl to C5. Used to create gallate from CAT, or 3-O-methylgallate from GUAI
+DELETE ATOM H5
+ATOM C5   CLG2R6A  0.075
+ATOM O5   OLG311  -0.495
+ATOM HO5  HLGP1    0.420
+BOND C5 O5 O5 HO5
+
+PRES C1OH 0.00 ! Adds a hydroxyl to C1 after LCH has been applied.
+DELETE ATOM H1
+ATOM C1   CLG2R6A  0.075
+ATOM O1   OLG311  -0.495
+ATOM HO1  HLGP1    0.420
+BOND C1 O1 O1 HO1
+
+PRES BALC 0.00 ! Creates benzylalcohol from a monomer.
+DELETE ATOM C8
+DELETE ATOM H8
+DELETE ATOM O8
+DELETE ATOM HO8
+DELETE ATOM C9
+DELETE ATOM O9
+DELETE ATOM HO9
+DELETE ATOM H91
+DELETE ATOM H92
+ATOM C7   CLG321   0.060
+ATOM H7A   HLGA2   0.090
+ATOM H7    HLGA2   0.090
+BOND H7A C7
+
+! These sugars are not explicitly parameterized. We instead do the appropriate typeconversions so that patches
+! appropriate for 5-membered rings are appropriate for 6-membered rings.
+
+PRES FARL6 0.00 !Ferulic acid-glucose linkage. Ester linkage to glucose C6. Assumes residue 1 is either FERU or has been treated by the DBAP patch
+!See 10.1093/mp/ssp067
+DELETE ATOM 1HO9         !         1OC
+ATOM 1C8  CLG2DC1 -0.123 !        //
+ATOM 1C9  CLG2O2   0.600 !--1C8-1C9 
+ATOM 1O9  OLG302  -0.317 !        \
+ATOM 1OC  OLG2D1  -0.609 !        1O9--2C6--Sugar
+DELETE ATOM 2O6
+DELETE ATOM 2HO6
+ATOM 2C6   CC321   0.119
+BOND 1O9   2C5  
+
+PRES BET16 0.00 ! This is a linkage between a lignin alpha (residue 2) and a sugar (residue 1) C5 atom.
+DELETE ATOM 1O6
+DELETE ATOM 1HO6         !                 2C8--
+ATOM 1C6   CC321   0.011 !                 /
+DELETE ATOM 2HO7         ! Sugar-1C6-2O7-2C7
+ATOM 2C7  CLG311   0.115 !                  \
+ATOM 2O7  OLG301  -0.396 !                  2C1--
+BOND 1C5   2O7           !                 //
+
+PRES BET26 0.00 ! This is a linkage between a lignin alpha (residue 2) and a sugar (residue 1) C2 atom.
+DELETE ATOM 1O2          !
+DELETE ATOM 1HO2         !  --1C1          2C8--
+ATOM 1C2   CC3161  0.137 !      \         /
+DELETE ATOM 2HO7         !       1C2-2O7-2C7
+ATOM 2C7  CLG311   0.076 !      /          \ 
+ATOM 2O7  OLG301  -0.393 !  --1C3         2C1-- 
+BOND 1C2   2O7           !                //
+
+PRES LIHE6 0.00 ! This is a linkage between a lignin beta (residue 2) and a sugar (residue 1) C1 atom.
+DELETE ATOM 1O1
+DELETE ATOM 1HO1
+ATOM 1O5   OC3C61 -0.373 !  1O5            2C9
+ATOM 1C1   CC3162  0.138 ! /   \          /
+ATOM 1C5   CC3163  0.176 !1C5  1C1--2O8--2C8
+DELETE ATOM 2HO8         !     /          \
+ATOM 2C8  CLG311   0.092 !1C3--1C2         2C7
+ATOM 2O8  OLG301  -0.303 ! 
+BOND 1C1   2O8  
+
+PRES PGYS6 0.00 ! This is a linkage between O4 of lignin (residue 2) and a sugar (residue 1) C1 atom.
+DELETE ATOM 1O1
+DELETE ATOM 1HO1
+ATOM 1O5   OC3C61 -0.402 !  1O5             2C3
+ATOM 1C1   CC3162  0.262 ! /   \           //
+ATOM 1C5   CC3163  0.158 !1C5   1C1--2O4--2C4
+DELETE ATOM 2HO4         !      /          \
+ATOM 2C4  CLG2R6B  0.182 !1C3--1C2         2C5 
+ATOM 2O4  OLG301  -0.380 ! 
+BOND 1C1   2O4  

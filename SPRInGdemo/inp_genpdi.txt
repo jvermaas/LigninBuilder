@@ -1,0 +1,8 @@
+chain_types
+1
+chain_details
+1.5	 22	 10
+max_attempts
+3000
+pdi_op_file
+polydisp.inp

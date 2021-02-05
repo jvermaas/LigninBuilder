@@ -1,0 +1,113 @@
+Case number: 1
+Creating TCL file for switchgrass
+Polydisperse system 
+Chain#/Num Residues: 1	71
+Chain#/Num Residues: 2	52
+Chain#/Num Residues: 3	51
+Chain#/Num Residues: 4	6
+Chain#/Num Residues: 5	32
+Chain#/Num Residues: 6	21
+Chain#/Num Residues: 7	8
+Chain#/Num Residues: 8	16
+Chain#/Num Residues: 9	26
+Chain#/Num Residues: 10	14
+PDI: 1.47819
+Tot res/pat: 297	287
+Res/patch inputs: inpprob_res.dat	inpprob_pat.dat
+Input Topology file file: top_lignin.top
+Segment name in input (or output prefix): LIG
+#attempts/Tolerance: 20	0.1
+Patch-residue constraints: Yes
+Patch-patch constraints: Yes
+Output style: single
+Analysis beginning ..
+Building branched chains...
+Making cumulative distribution for segments..
+[0.04, 0.33999999999999997, 0.5499999999999999, 0.8899999999999999, 0.9899999999999999, 0.9999999999999999]
+Making cumulative distribution for patches..
+[0.44000000000000006, 0.8879999999999999, 0.9159999999999999, 0.9216, 1.0]
+Creating residue list..
+Probabilities for each attempt
+Attempt#	PHP (0.04)	GUAI (0.3)	SYR (0.21)	PCA (0.34)	FERUT (0.1)	TRCN (0.01)	L2norm 
+1	0.037037	0.424242	0.255892	0.242424	0.040404	0	0.175282
+2	0.040404	0.397306	0.286195	0.208754	0.0673401	0	0.183484
+3	0.047138	0.400673	0.255892	0.218855	0.0774411	0	0.166064
+4	0.047138	0.383838	0.252525	0.242424	0.0740741	0	0.138497
+5	0.0572391	0.346801	0.286195	0.252525	0.0572391	0	0.133692
+6	0.0572391	0.390572	0.265993	0.228956	0.0572391	0	0.160919
+7	0.0673401	0.363636	0.299663	0.228956	0.040404	0	0.169762
+8	0.047138	0.387205	0.265993	0.252525	0.047138	0	0.146073
+9	0.0572391	0.340067	0.313131	0.218855	0.0707071	0	0.167847
+10	0.0707071	0.410774	0.245791	0.185185	0.0875421	0	0.196768
+11	0.0639731	0.400673	0.249158	0.215488	0.0707071	0	0.169424
+12	0.0707071	0.377104	0.228956	0.255892	0.0639731	0.003367	0.125153
+13	0.037037	0.387205	0.255892	0.259259	0.0606061	0	0.133756
+14	0.0673401	0.373737	0.289562	0.212121	0.0572391	0	0.175489
+15	0.043771	0.363636	0.262626	0.26936	0.0572391	0.003367	0.117029
+16	0.0707071	0.353535	0.292929	0.215488	0.0673401	0	0.165397
+17	0.040404	0.407407	0.265993	0.225589	0.0606061	0	0.171504
+18	0.037037	0.367003	0.319865	0.208754	0.0673401	0	0.186978
+19	0.0572391	0.387205	0.262626	0.212121	0.0808081	0	0.16581
+20	0.0572391	0.397306	0.245791	0.232323	0.0639731	0.003367	0.154864
+Did not find optimal residue configuration
+Using best configuration with residue L2norm: 0.117029
+Reading patch-patch constraints..
+All constraints 
+B5L	55	5BR	5BL
+B5R	55	5BR	5BL
+55	55	B5L	B5R	5BR	5BL
+4O5R	55	5BR	5BL
+4O5L	55	5BR	5BL
+BO4R	O4BR	O4BL	4O5	4O5R	4O5L
+BO4L	O4BR	O4BL	4O5	4O5R	4O5L
+BB	BO4L	BO4R	B5L	B5R	BB	GOG	B5	BO4
+B5	55	5BR	5BL
+GOG	BB
+Creating patches list..
+Probabilities for each attempt
+Attempt#	GOG (0.44)	BO4 (0.448)	55 (0.028)	BB (0.0056)	B5 (0.0784)	L2norm 
+1	0.337979	0.623693	0.00696864	0	0.0313589	0.209673
+2	0.337979	0.595819	0.00696864	0	0.0592334	0.181933
+3	0.337979	0.585366	0.00348432	0	0.0731707	0.173024
+4	0.337979	0.602787	0.010453	0	0.0487805	0.188637
+5	0.337979	0.602787	0.00348432	0	0.0557491	0.188449
+6	0.337979	0.58885	0.00696864	0	0.0662021	0.175697
+7	0.337979	0.58885	0.0139373	0	0.0592334	0.175623
+8	0.337979	0.609756	0.0139373	0	0.0383275	0.19598
+9	0.337979	0.620209	0.00348432	0	0.0383275	0.205675
+10	0.337979	0.606272	0.00696864	0	0.0487805	0.191857
+11	0.337979	0.599303	0.010453	0	0.0522648	0.185265
+12	Could not find a sequence 
+13	Could not find a sequence 
+14	0.337979	0.61324	0.00348432	0	0.0452962	0.198597
+15	Could not find a sequence 
+16	0.337979	0.595819	0.0139373	0	0.0522648	0.182129
+17	0.337979	0.58885	0.0209059	0	0.0522648	0.176102
+18	Could not find a sequence 
+19	0.337979	0.606272	0.010453	0	0.0452962	0.192076
+20	0.337979	0.609756	0.00348432	0	0.0487805	0.195149
+Did not find patch optimal configuration
+Using last patch configuration with L2norm: 0.173024
+Writing data to files 
+Output style single
+****Writing chain number: 1***
+Writing config for  10 chains
+****Writing chain number: 2***
+Writing config for  10 chains
+****Writing chain number: 3***
+Writing config for  10 chains
+****Writing chain number: 4***
+Writing config for  10 chains
+****Writing chain number: 5***
+Writing config for  10 chains
+****Writing chain number: 6***
+Writing config for  10 chains
+****Writing chain number: 7***
+Writing config for  10 chains
+****Writing chain number: 8***
+Writing config for  10 chains
+****Writing chain number: 9***
+Writing config for  10 chains
+****Writing chain number: 10***
+Writing config for  10 chains
+Completed psf generation for casenum: 1

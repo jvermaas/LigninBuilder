@@ -1,0 +1,9 @@
+chain_types
+2
+chain_details
+1.3	32	15
+1.2	18	6
+tolerance
+10
+op_prefix
+polydisp2.inp

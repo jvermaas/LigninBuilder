@@ -1,0 +1,11 @@
+patch	restrict_before	restrict_after
+55	SYR	SYR
+405	None	SYR
+B5R	None	SYR
+B5L	None	SYR
+B5	None	SYR
+55	TRCN	TRCN
+405	None	TRCN
+B5R	TRCN	TRCN
+B5L	TRCN	TRCN
+B5	TRCN	TRCN

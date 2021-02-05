@@ -1,0 +1,3 @@
+parameters extraparameters.prm 
+ parameters ../par_all36_cgenff.prm 
+
