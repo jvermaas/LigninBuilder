@@ -101,7 +101,7 @@ for molnum, mol in enumerate(testmol):
             # Prune down the "active" part to the part that looks like Syringol
             syringolmatches = mol.GetSubstructMatches(monomers[-2])
             for idx in np.setdiff1d(np.asarray(matches), np.asarray(syringolmatches)):
-                atom = mol.GetAtomWithIdx(idx)
+                atom = mol.GetAtomWithIdx(int(idx))
                 if atom.HasProp("ringAtom"):
                     atom.ClearProp("ringAtom")
         # The ordering of the monomers array is very deliberate. If something matches against TRCN, it can't match
@@ -238,7 +238,7 @@ for molnum, mol in enumerate(testmol):
     # Look for endcaps that aren't the default triol.
     for i, endcap in enumerate(endcaps[::-1]):
         matches = mol.GetSubstructMatches(endcap)
-        c1index = 5 - (i/2)
+        c1index = 5 - (i//2)
         for match in matches:
             c1atom = mol.GetAtomWithIdx(match[c1index])
             if c1atom.HasProp("name") and c1atom.GetProp("name") == "C1":
