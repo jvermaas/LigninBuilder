@@ -8,4 +8,4 @@
 # script is sourced, the variable $dir must contain the
 # full path name of this file's directory.
 
-package ifneeded ligninbuilder 1.0 "set env(LIGNINBUILDERDIR) {$dir}; [list source [file join $dir ligninbuilder.tcl]]" 
+package ifneeded ligninbuilder 1.1 "set env(LIGNINBUILDERDIR) {$dir}; [list source [file join $dir ligninbuilder.tcl]]" 
