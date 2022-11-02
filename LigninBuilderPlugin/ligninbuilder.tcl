@@ -510,12 +510,16 @@ proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 		set tail [file tail $psf]
 		set name [file rootname $tail]
 		set mid [mol new $psf]
+		puts [molinfo list]
 		mol addfile [file join $directory $name.pdb] waitfor all
+		puts [molinfo list]
 		set asel [atomselect $mid "all"]
 		$asel set beta 0
 		animate write psf [file join $directory L.psf]
 		animate write pdb [file join $directory L.pdb]
-		mdffi sim $asel -o [file join $directory grid.dx] -res 10 -spacing 1
+		puts [molinfo list]
+		mdffi sim $asel -o [file join $directory grid.dx] -res 10 -spacing 1 -mol top
+		puts [molinfo list]
 		set finished 0
 		set counter 0
 		set fout [open [file join $directory "addenda.namd"] w ]
