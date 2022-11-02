@@ -1,5 +1,7 @@
 # LigninBuilder User's Guide.
-This is the README/User Guide for LigninBuilder, a program to build 3D lignin structures from topological libraries.
+This is the README/User Guide for LigninBuilder, a program to build 3D lignin structures from topological libraries. 
+[![DOI](https://zenodo.org/badge/152644373.svg)](https://zenodo.org/badge/latestdoi/152644373)
+
 
 ## Installation
 

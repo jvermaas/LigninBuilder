@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper describing its function."
+authors:
+- family-names: "Vermaas"
+  given-names: "Josh"
+  orcid: "https://orcid.org/0000-0003-3139-6469"
+- family-names: "Lauren"
+  given-names: "Dellon"
+- family-names: "Broadbelt"
+  given-names: "Linda"
+  orcid: "https://orcid.org/0000-0003-4253-592X"
+- family-names: "Crowley"
+  given-names: "Michael"
+  orcid: "https://orcid.org/0000-0001-5163-9398"
+- family-names: "Beckham"
+  given-names: "Gregg"
+  orcid: "https://orcid.org/0000-0002-3480-212X"
+title: "Automated Transformation of Lignin Topologies into Atomic Structures with LigninBuilder"
+version: 1.0.0
+doi: 10.1021/acssuschemeng.8b05665
+date-released: 2018-12-11
+url: "https://github.com/jvermaas/LigninBuilder"

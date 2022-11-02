@@ -1,4 +1,4 @@
-package provide ligninbuilder 1.0
+package provide ligninbuilder 1.1
 
 namespace eval ::ligninbuilder:: {
 package require psfgen
