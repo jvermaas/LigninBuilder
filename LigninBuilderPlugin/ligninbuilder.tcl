@@ -518,7 +518,7 @@ proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 		animate write psf [file join $directory L.psf]
 		animate write pdb [file join $directory L.pdb]
 		puts [molinfo list]
-		mdffi sim $asel -o [file join $directory grid.dx] -res 10 -spacing 1 -mol top
+		mdffi sim $asel -o [file join $directory grid.dx] -res 10 -spacing 1 -mol $mid
 		puts [molinfo list]
 		set finished 0
 		set counter 0
@@ -558,7 +558,7 @@ proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 			}
 			if { ! $finished } {
 				$badbeta update
-				mdffi sim $badbeta -o [file join $directory grid.dx] -res 10 -spacing 1
+				mdffi sim $badbeta -o [file join $directory grid.dx] -res 10 -spacing 1 -mol $mid
 			}
 			if { $unfinished } {
 				set finished 0
