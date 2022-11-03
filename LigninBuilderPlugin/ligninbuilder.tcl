@@ -517,9 +517,11 @@ proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 		$asel set beta 0
 		animate write psf [file join $directory L.psf]
 		animate write pdb [file join $directory L.pdb]
-		puts [molinfo list]
 		mdffi sim $asel -o [file join $directory grid.dx] -res 10 -spacing 1 -mol $mid
-		puts [molinfo list]
+		if { [molinfo top get numframes] == 0 } {
+			#mdffi sim in some versions of VMD 1.9.4 uselessly makes a new molecule, which can cause other commands to fail.
+			mol delete top
+		}
 		set finished 0
 		set counter 0
 		set fout [open [file join $directory "addenda.namd"] w ]
@@ -533,7 +535,7 @@ proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 			animate delete all $mid
 			incr counter
 			incr finished
-			mol addfile [file join $directory out.coor] type namdbin waitfor all
+			mol addfile [file join $directory out.coor] type namdbin waitfor all molid $mid
 			set unfinished [vecsum [$asel get beta]]
 			$asel set beta 0
 			$asel set occupancy 0
@@ -559,6 +561,10 @@ proc minimizestructures {directory namdbin namdargs {namdextraconf ""}} {
 			if { ! $finished } {
 				$badbeta update
 				mdffi sim $badbeta -o [file join $directory grid.dx] -res 10 -spacing 1 -mol $mid
+				if { [molinfo top get numframes] == 0 } {
+					#mdffi sim in some versions of VMD 1.9.4 uselessly makes a new molecule, which can cause other commands to fail.
+					mol delete top
+				}
 			}
 			if { $unfinished } {
 				set finished 0
